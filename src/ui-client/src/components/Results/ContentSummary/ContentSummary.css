@@ -1,0 +1,96 @@
+/* Scale */
+.riosm-summary-scale {
+    background-color: white;
+    border: 1px solid rgb(230,230,230);
+    border-radius: 8px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 520px;
+}
+
+.riosm-summary-scale-key > div,
+.riosm-summary-scale-value > div {
+    display: inline-block;
+    width: 100px;
+}
+
+.riosm-summary-scale-key {
+    color: rgb(150,150,150);
+    margin-top: -2px;
+    text-transform: uppercase;
+}
+
+.riosm-summary-scale-value {
+    color: rgb(50,50,50);
+}
+
+.riosm-summary-scale-value > div {
+    font-weight: 700;
+}
+
+.riosm-summary-scale-value > div:nth-child(1) {
+    color: rgb(231, 85, 0);
+}
+.riosm-summary-scale-value > div:nth-child(2) {
+    color: rgb(231, 177, 0);
+}
+
+.riosm-summary-scale-value > div:nth-child(3) {
+    color: rgb(155, 190, 0);
+}
+
+.riosm-summary-scale-value > div:nth-child(4) {
+    color: rgb(144, 206, 0);
+}
+.riosm-summary-scale-value > div:nth-child(5) {
+    color: rgb(0, 190, 0);
+}
+
+/* Composite Scores */
+.riosm-summary-composite {
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: left;
+    width: 500px;
+}
+
+.riosm-summary-composite-score {
+    border-bottom: 1px solid rgb(230,230,230);
+    color: rgb(100,100,100);
+    font-size: 1.3rem;
+    font-weight: 500;
+    height: 35.7px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.riosm-summary-composite-score > span {
+    float: right;
+    margin-top: -4px;
+}
+
+.riosm-summary-composite-score strong {
+    color: rgb(80,80,80);
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.riosm-summary-composite-score-diff {
+    float: right;
+    font-size: 1.0rem;
+    margin-top: 10px;
+}
+
+.riosm-summary-composite-score-diff.over {
+    color: rgb(0, 190, 0);
+}
+
+.riosm-summary-composite-score-diff.under {
+    color: rgb(231, 85, 0);
+}

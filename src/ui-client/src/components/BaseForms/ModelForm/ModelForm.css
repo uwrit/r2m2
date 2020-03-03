@@ -1,0 +1,11 @@
+.model-form-desc {
+    font-size: 1.2rem;
+    font-weight: 300;
+    width: 100%;
+    text-align: center;
+}
+
+.model-form-desc-inner {
+    margin: auto;
+    max-width: 1000px;
+}
