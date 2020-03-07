@@ -14,6 +14,8 @@ import Snackbar from '../../components/Modals/Snackbar/Snackbar';
 import Greeting from '../../components/Greeting/Greeting';
 import './Main.css';
 
+import { EHRForm } from '../../components/Models/EHR';
+
 interface Props {
     dispatch: any;
     general: GeneralState;
@@ -60,6 +62,7 @@ export default class Main extends React.PureComponent<Props,State> {
                 <Snackbar dispatch={dispatch} state={general.snackbar} />
                 <div className={`${c}-inner`}>
                     {this.getCurrentContent()}
+                    {/* <EHRForm dispatch={dispatch} answers={user.answers} /> */}
                 </div>
             </div>
         );

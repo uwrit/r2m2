@@ -19,7 +19,8 @@ export class ModelSelectionOption extends React.PureComponent<Props> {
         const complete = answers[model.completeField] === FormState.Complete;
 
         return (
-            <div className={`${c} ${model.selected ? 'selected' : ''} ${model.description.length > 450 ? 'preview' : ''}`} onClick={this.handleModelClick}>
+            // <div className={`${c} ${model.selected ? 'selected' : ''} ${model.description.length > 450 ? 'preview' : ''}`} onClick={this.handleModelClick}>
+            <div className={`${c} ${model.selected ? 'selected' : ''} ${model.name.length > 450 ? 'preview' : ''}`} onClick={this.handleModelClick}>
                 {complete && <div className={`${c}-complete`}>Complete</div>}
                 <div className={`${c}-top`}>
                     <div className={`${c}-checkbox`}>
@@ -28,7 +29,8 @@ export class ModelSelectionOption extends React.PureComponent<Props> {
                     <div className={`${c}-name`}>{model.name}</div>
                 </div>
                 <div className={`${c}-bottom`}>
-                    <div className={`${c}-desc`}>{model.description}</div>
+                    {/* <div className={`${c}-desc`}>{model.description}</div> */}
+                    <div className={`${c}-desc`}>{model.name}</div>
                 </div>
             </div>
         );

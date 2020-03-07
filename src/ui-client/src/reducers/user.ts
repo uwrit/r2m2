@@ -21,66 +21,19 @@ export const defaultUserState = (): UserState => {
             'email': '',
             'user_complete': FormState.NotStarted,
 
-            // RIOSM
-            'riosm_complete': FormState.NotStarted,
-            'riosm_q1_engagement': '',  
-            'riosm_q2_governance': '',        
-            'riosm_q3_reputation': '',        
-            'riosm_q4_support_open_science': '',
-            'riosm_q5_data_sharing': '',
-            'riosm_q6_data_sharing_edu': '',      
-            'riosm_q7_data_analytics_activity': '',
-            'riosm_q8_ctms': '',
-            'riosm_q9_external_data_edw': '',
-            'riosm_q10_research_computing': '',
-            'riosm_q11_secondary_data_use': '',
-
-            // Quintegra eHMM
-            'quintegra_ehmm_complete': FormState.NotStarted,
-            'quintegra_ehmm_q1': '',    
-
-            // IDC Healthcare IT
-            'idc_healthcare_it_complete': FormState.NotStarted,
-            'idc_healthcare_it_q1': '',
-
-            // HIMSS EMRAM
-            'himss_emram_complete': FormState.NotStarted,
-            'himss_emram_q1': '',
-
-            // NEHTA IMM
-            'nehta_imm_complete': FormState.NotStarted,
-            'nehta_imm_q1': '',
-
-            // HIMSS CCMM
-            'himss_ccmm_complete': FormState.NotStarted,
-            'himss_ccmm_q1': '',        
-            'himss_ccmm_q2': '',              
-            'himss_ccmm_q3': '',          
-            'himss_ccmm_q4': '',
-
-            // EPRMM
-            'eprmm_complete': FormState.NotStarted,
-            'eprmm_q1': '',
-
-            // Forrester
-            'forrester_model_complete': FormState.NotStarted,
-            'forrester_model_q1': '',
-            'forrester_model_q2': '',
-            'forrester_model_q3': '',
-            'forrester_model_q4': '',
-
-            // Precision Health
-            'precision_health_complete': FormState.NotStarted,
-            'precision_health_q1': '',
-            'precision_health_q2': '',
-            'precision_health_q3': '',
-            'precision_health_q4': '',
-            'precision_health_q5': '',
-            'precision_health_q6': '',
-            'precision_health_q7': '',
-            'precision_health_q8': '',
-            'precision_health_q9': '',
-            'precision_health_q10': ''
+            // EHR
+            'ehr_complete': FormState.NotStarted,
+            'ehr_q1': '',
+            'ehr_q2': '',
+            'ehr_q3': '',
+            'ehr_q4': '',
+            'ehr_q5': '',
+            'ehr_q6a': '',
+            'ehr_q6b': '',
+            'ehr_q7': '',
+            'ehr_q8': '',
+            'ehr_q9': '',
+            'ehr_q10': ''
         },
         answersLoadState: AnswerScoreLoadState.NotLoaded,
         email: '',
@@ -96,64 +49,21 @@ export const defaultUserState = (): UserState => {
 
 const userDefaultScore = (): BaseAnswerScore => {
     return {
-        riosm: 0,
-        quintegra_ehmm: 0,
-        idc_healthcare_it: 0,
-        himss_emram: 0,
-        himss_ccmm: 0,
-        nehta_imm: 0,
-        eprmm: 0,
-        forrester: 0,
-        precision_health: 0,
-        riosm_categories: {
-            overall: 0,
-            governance: 0,
-            data_and_software_sharing: 0,
-            research_informatics: 0
-        }
+        ehr: 0
     };
 }
 
 const allDefaultScore = (): AllAnswerScore => {
     return {
-        riosm: 0,
-        quintegra_ehmm: 0,
-        idc_healthcare_it: 0,
-        himss_emram: 0,
-        himss_ccmm: 0,
-        nehta_imm: 0,
-        eprmm: 0,
-        forrester: 0,
-        precision_health: 0,
-        riosm_categories: {
-            overall: 0,
-            governance: 0,
-            data_and_software_sharing: 0,
-            research_informatics: 0
-        },
-        riosm_questions: {
+        ehr: 0,
+        ehr_questions: {
             q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q2Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q3Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q4Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q5Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q6Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q7Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q8Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q9Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q10Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q11Stats: { mean: 0, min: 0, max: 0, median: 0 }
-        },
-        quintegra_ehmm_questions: {
-            q1Stats: { mean: 0, min: 0, max: 0, median: 0 }
-        },
-        precision_health_questions: {
-            q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q2Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q3Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q4Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q5Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q6Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q6AStats: { mean: 0, min: 0, max: 0, median: 0 },
+            q6BStats: { mean: 0, min: 0, max: 0, median: 0 },
             q7Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q8Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q9Stats: { mean: 0, min: 0, max: 0, median: 0 },

@@ -8,6 +8,8 @@ import { setCurrentView } from '../../actions/general';
 import { AppView } from '../../model/GeneralState';
 import './Greeting.css';
 
+import {EHR} from '../../model/Models/EHR'
+
 interface Props {
     dispatch: any;
     models: BaseModel[];
@@ -28,7 +30,7 @@ export default class Greeting extends React.PureComponent<Props> {
         const c = this.className;
         const { user } = this.props;
         const newUser = this.isNewUser();
-        let greetingText = `Hi ${user.answers.user_fname}! Welcome to the CD2H Maturity Model survey tool!`;
+        let greetingText = `Hi ${user.answers.user_fname}! Welcome to the Research Resource Maturity Model survey tool!`;
         let buttonText = 'Get Started';
         let buttonFunc = this.handleGetStartedClick;
 
@@ -90,7 +92,9 @@ export default class Greeting extends React.PureComponent<Props> {
 
     private handleGetStartedClick = () => {
         const { dispatch } = this.props;
-        dispatch(setCurrentView(AppView.ModelSelection));
+        // dispatch(setCurrentView(AppView.ModelSelection));
+        dispatch(modelSetCurrent(EHR));
+        dispatch(setCurrentView(AppView.ModelSurvey));
     }
 
     private handleContinueSurveysClick = () => {
@@ -99,7 +103,7 @@ export default class Greeting extends React.PureComponent<Props> {
 
         const remaining = selected.filter(m => user.answers[m.completeField] !== FormState.Complete);
         const next = remaining.length ? remaining[0] : selected[0];
-        dispatch(modelSetCurrent(next));
+        dispatch(modelSetCurrent(EHR));
         dispatch(setCurrentView(AppView.ModelSurvey));
     }
 

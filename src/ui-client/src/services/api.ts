@@ -2,19 +2,7 @@ import Axios from 'axios';
 import { UserAnswersDTO, UserUpdateDTO, UserAnswers } from '../model/User';
 import { UserState } from '../model/UserState';
 import { BaseAnswerScore, AnswerScores } from "../model/Score";
-import { 
-    riosmFields, 
-    QUINTEGRA_EHMM_Q1, 
-    IDC_HEALTHCARE_IT_Q1, 
-    HIMSS_EMRAM_Q1, 
-    himssCCmmFields, 
-    EPRMM_Q1, 
-    NEHTA_IMM_Q1,
-    precisionHealthFields,
-    riosmGovernance, 
-    riosmDataAndSoftware, 
-    riosmResearchInformatics,
-} from "../model/User";
+import { ehrFields } from "../model/User";
 
 let serverState: UserAnswers = {};
 
@@ -115,24 +103,10 @@ export const calculateUserScores = (user: UserAnswers): BaseAnswerScore => {
     const maxSix   = 6.0;
     const maxSeven = 7.0;
     const valElseZero = (val:string) => val !== '' ? parseFloat(val) : 0;
-    const riosmSum = sum(validate((riosmFields.map(f => user[f]))));
+    const ehrSum = sum(validate((ehrFields.map(f => user[f]))));
     
     return {
-        riosm            : riosmSum / (riosmFields.length * maxFive),
-        quintegra_ehmm   : valElseZero(user[QUINTEGRA_EHMM_Q1]) / maxSeven,
-        idc_healthcare_it: valElseZero(user[IDC_HEALTHCARE_IT_Q1]) / maxFive,
-        himss_emram      : valElseZero(user[HIMSS_EMRAM_Q1]) / maxSeven,
-        himss_ccmm       : sum(validate(himssCCmmFields.map(f => user[f]))) / (himssCCmmFields.length * maxFive),
-        nehta_imm        : valElseZero(user[NEHTA_IMM_Q1]) / maxFive,
-        eprmm            : valElseZero(user[EPRMM_Q1]) / maxSix,
-        forrester        : 0.0,
-        precision_health : sum(validate(precisionHealthFields.map(f => user[f]))) / (precisionHealthFields.length * maxFive),
-        riosm_categories : {
-            overall             : riosmSum / riosmFields.length,
-            governance          : sum(validate(riosmGovernance.map(f => user[f]))) / riosmGovernance.length,
-            data_and_software_sharing   : sum(validate(riosmDataAndSoftware.map(f => user[f]))) / riosmDataAndSoftware.length,
-            research_informatics: sum(validate(riosmResearchInformatics.map(f => user[f]))) / riosmResearchInformatics.length
-        }    
+        ehr: ehrSum / (ehrFields.length * maxFive)
     };
 };
 
