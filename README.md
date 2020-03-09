@@ -1,12 +1,12 @@
 # R2M2
 
-Welcome to the Maturity Models Survey app!
+Welcome to the Research Resource Maturity Models Survey app!
 
 - [Running the app locally](#running-the-app-locally)
 - [Adding Models](#adding-models)
 
 ## Running the app locally
-The Maturity Models survey app uses a three-tiered architecture with a React web client, a small Python-Flask server API, and a REDCap project as a database.
+The R2M2 survey app uses a three-tiered architecture with a React web client, a small Python-Flask server API, and a REDCap project as a database.
 
 To run it locally, do the following steps:
 
@@ -14,10 +14,10 @@ To run it locally, do the following steps:
 
 ```bash
 # Clone the repo
-$ git clone git@github.com:data2health/maturity-model.git
+$ git clone git@github.com:uwrit/r2m2.git
 
 # Setup a python virtual environment
-$ cd maturity-models/src/server
+$ cd r2m2/src/server
 $ python3 -m venv venv
 $ . venv/bin/activate
 
@@ -25,7 +25,7 @@ $ . venv/bin/activate
 $ python3 -m pip install Flask requests
 ```
 
-Next, create a `config.json` file to tell the API the REDCap instance to point to under `/maturity-models/src/server/src/services/config.json`.
+Next, create a `config.json` file to tell the API the REDCap instance to point to under `/r2m2/src/server/flaskr/app/modules/services/config.json`.
 
 ```json
 {
@@ -38,7 +38,7 @@ Next, create a `config.json` file to tell the API the REDCap instance to point t
 
 Run the API
 ```bash
-$ python3 src/app.py
+$ python3 server/run.py
 ```
 
 ### Web client setup
@@ -47,7 +47,7 @@ Now that the API is running, you can setup the React web client. Make sure you h
 
 ```bash
 # Install client dependencies
-$ cd maturity-models/src/ui-client
+$ cd r2m2/src/ui-client
 $ npm install
 
 # Run the client
@@ -58,7 +58,7 @@ Note that in order to be allowed into the app (even in development), you'll need
 
 ## Adding Models
 
-Adding models to the Maturity Models Survey app is straightforward.
+Adding models to the Research Resource Maturity Models Survey app is straightforward.
 
 1. Add a new `Form` to the [REDCap project](https://rcdev.iths.org/redcap_v9.4.2/Design/online_designer.php?pid=277) to represent the Model you'd like to add. 
 
@@ -70,7 +70,7 @@ So for example, a form called `Example` could have variables of the form:
 - `example_q2_fav_monty_python_joke`
 - ...
 
-2. Next, add the model to the client app. Begin by adding the new variables you added to the REDCap project above to the existing `AnswerField` type in [maturity-models/src/ui-client/src/model.User.ts](https://github.com/uwrit/maturity-models/blob/master/src/ui-client/src/model/User.ts#L3).
+2. Next, add the model to the client app. Begin by adding the new variables you added to the REDCap project above to the existing `AnswerField` type in [r2m2/src/ui-client/src/model.User.ts](https://github.com/uwrit/r2m2/blob/master/src/ui-client/src/model/User.ts#L3).
 
 ```typescript
 export type AnswerField =
@@ -88,7 +88,7 @@ export type AnswerField =
     ...
 ```
 
-3. Create a new file for your Model under [maturity-models/src/ui-client/src/model/Models/](https://github.com/uwrit/maturity-models/tree/master/src/ui-client/src/model/Models). Inside the file, create a new `BaseModel` object. This is the data that will populate the form actually seen by users.
+3. Create a new file for your Model under [r2m2/src/ui-client/src/model/Models/](https://github.com/uwrit/r2m2/tree/master/src/ui-client/src/model/Models). Inside the file, create a new `BaseModel` object. This is the data that will populate the form actually seen by users.
 
 ```typescript
 import React from "react";
@@ -137,7 +137,7 @@ export const Example: BaseModel =
 
 Note that the `import { ExampleForm } from ...` statement won't work yet, we'll do that next.
 
-4. Under [maturity-models/src/ui-client/src/components/Models/](https://github.com/uwrit/maturity-models/tree/master/src/ui-client/src/model/Models), add a new file called `Example.tsx`, subsituting "Example" for the actual name of your Model. This is the React component we want to render when your model is selected by the user. Most models can work using existing React components we've created (specifically [ModelForm](https://github.com/uwrit/maturity-models/blob/master/src/ui-client/src/components/BaseForms/ModelForm/ModelForm.tsx)), so you should rarely need to do anything custom here.
+4. Under [r2m2/src/ui-client/src/components/Models/](https://github.com/uwrit/r2m2/tree/master/src/ui-client/src/model/Models), add a new file called `Example.tsx`, subsituting "Example" for the actual name of your Model. This is the React component we want to render when your model is selected by the user. Most models can work using existing React components we've created (specifically [ModelForm](https://github.com/uwrit/r2m2/blob/master/src/ui-client/src/components/BaseForms/ModelForm/ModelForm.tsx)), so you should rarely need to do anything custom here.
 
 ```typescript
 import React from 'react';
@@ -160,7 +160,7 @@ export class ExampleForm extends React.PureComponent<Props> {
 }
 ```
 
-5. Last step: add your Model to the `defaultModelState() function` under [maturity-models/src/ui-client/src/reducers/model.ts](https://github.com/uwrit/maturity-models/blob/master/src/ui-client/src/reducers/model.ts#L6). This "officially" adds the model to the list that users can select.
+5. Last step: add your Model to the `defaultModelState() function` under [r2m2/src/ui-client/src/reducers/model.ts](https://github.com/uwrit/r2m2/blob/master/src/ui-client/src/reducers/model.ts#L6). This "officially" adds the model to the list that users can select.
 
 ```typescript
 import { MODEL_SET_CURRENT, ModelAction, MODEL_SET_SELECTED } from '../actions/model';
