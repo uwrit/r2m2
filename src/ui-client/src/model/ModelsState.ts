@@ -2,7 +2,7 @@ import { UserAnswers, AnswerField } from "./User"
 
 export interface BaseModel {
     completeField: AnswerField;
-    description: string;
+    // description: string;
     name: string;
     shortName: string;
     questions: ModelQuestion[];
@@ -19,7 +19,7 @@ export interface ModelQuestion {
 
 export interface ModelQuestionOption {
     text: string | JSX.Element | JSX.Element[];
-    value: LikertStringOneToFive | LikertStringOneToSeven | HIMSS_EMRAMZeroToSeven;
+    value: LikertStringOneToFive | LikertStringOneToSeven;
 }
 
 export interface ModelsState {
@@ -28,7 +28,6 @@ export interface ModelsState {
 }
 
 export type LikertStringOneToFive = '' | '1' | '2' | '3' | '4' | '5'
-export type LikertStringOneToSeven = LikertStringOneToFive | '6' | '7'
-export type HIMSS_EMRAMZeroToSeven = '0' | LikertStringOneToSeven
+export type LikertStringOneToSeven = LikertStringOneToFive | '6' | '7' | '8'
 export enum FormState { NotStarted = '0', Started = '1', Complete = '2' }
-export type AnswerTypes = LikertStringOneToFive | LikertStringOneToSeven | FormState | HIMSS_EMRAMZeroToSeven
+export type AnswerTypes = LikertStringOneToFive | LikertStringOneToSeven | FormState

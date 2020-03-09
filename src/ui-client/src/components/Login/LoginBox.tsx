@@ -84,15 +84,15 @@ export default class LoginBox extends React.PureComponent<Props,State> {
                 </div>
 
                 {/* -or- */}
-                <div className={`${c}-or`}>
+                {/* <div className={`${c}-or`}>
                     <div className={`${c}-or-inner`}>or</div>
-                </div>
+                </div> */}
 
                 {/* Sign in as Guest */}
-                <div className={`${c}-button ${c}-button-guest`} tabIndex={3} onClick={this.handleGuestLoginClick}>
+                {/* <div className={`${c}-button ${c}-button-guest`} tabIndex={3} onClick={this.handleGuestLoginClick}>
                     Sign in as Guest
                     <FiChevronRight className="icon chevron" />
-                </div>
+                </div> */}
             </Form>
         );
     }

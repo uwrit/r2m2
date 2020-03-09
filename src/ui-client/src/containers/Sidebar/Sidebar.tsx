@@ -26,11 +26,11 @@ export default class Sidebar extends React.PureComponent<Props> {
             <div className={c}>
 
                 {/* CD2H logo */}
-                <a href="https://ctsa.ncats.nih.gov/cd2h/" target="_">
+                {/* <a href="https://ctsa.ncats.nih.gov/cd2h/" target="_">
                     <div className={`${c}-cd2h-link`} />
-                </a>
-                <div className={`${c}-cd2h-logo-container`}>
-                    <img alt="cd2h-logo" className={`${c}-cd2h-logo`} src={process.env.PUBLIC_URL + 'cd2h-logo.png'} />
+                </a> */}
+                <div className={`${c}-uw-logo-container`}>
+                    <img alt="uw-logo" className={`${c}-uw-logo`} src={process.env.PUBLIC_URL + 'uw-logo.png'} />
                 </div>
 
                 {/* Home */}

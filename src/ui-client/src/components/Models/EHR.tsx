@@ -1,5 +1,5 @@
 import React from 'react';
-import { IDC_Healthcare_IT } from '../../model/Models/IDC_Healthcare_IT';
+import { EHR } from '../../model/Models/EHR';
 import { UserAnswers } from '../../model/User';
 import { ModelForm } from '../BaseForms/ModelForm/ModelForm';
 
@@ -8,11 +8,11 @@ interface Props {
     answers: UserAnswers;
 }
 
-export class IDC_Healthcare_ITForm extends React.PureComponent<Props> {
+export class EHRForm extends React.PureComponent<Props> {
 
     public render() {
         const { dispatch, answers } = this.props;
         
-        return <ModelForm dispatch={dispatch} answers={answers} model={IDC_Healthcare_IT} />;
+        return <ModelForm dispatch={dispatch} answers={answers} model={EHR}/>;
     }
 }

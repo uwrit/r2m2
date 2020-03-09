@@ -11,9 +11,9 @@ export default class LeftFooter extends React.PureComponent<Props> {
         return (
             <div className={c}>
                 <p className={`${c}-shoutout`}>
-                    <span>Developed with 
-                        <span role="img" aria-label={'heart'}>❤️</span> 
-                        in Seattle by UW Medicine Research IT and the CD2H
+                    <span>Developed with
+                        <span role="img" aria-label={'heart'}> ❤️</span>
+                        in Seattle by UW Medicine Research IT
                     </span>
                 </p>
             </div>
