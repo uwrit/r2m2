@@ -13,7 +13,7 @@
     margin-top: 20%;
 }
 
-.cd2h-logo-wrapper {  
+.uw-logo-wrapper {  
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: 8px;
@@ -21,12 +21,12 @@
     padding: 0 4px 0 0;
 }
 
-.cd2h-logo {
-    height: 200px;
-    margin: -50px 0 -60px -75px;
+.uw-logo {
+    height: 80px;
+    margin: -10px 0 20px 5px;
 }
 
-.cd2h-logo-title {
+.uw-logo-title {
     color: rgb(9, 192, 116);
     display: inline-block;
     font-size: 2.3rem;
@@ -48,6 +48,7 @@
 
 .infobox-header {
     font-size: 2.5rem;
+    text-align: center;
 }
 
 .infobox-desc {

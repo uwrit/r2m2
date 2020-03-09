@@ -12,7 +12,7 @@
 }
 
 /* CD2H logo */
-.sidebar-cd2h-logo-container {
+.sidebar-uw-logo-container {
     background-color: white;
     border-radius: 4px;
     height: 58px;
@@ -20,12 +20,12 @@
     width: 180px;
 }
 
-.sidebar-cd2h-logo {
-    height: 110px;
-    margin: -25px 0 0 -30px;
+.sidebar-uw-logo {
+    height: 35px;
+    margin: 10px 0 0 4px;
 }
 
-.sidebar-cd2h-link {
+.sidebar-uw-link {
     height: 58px;
     margin-left: 20px;
     position: absolute;

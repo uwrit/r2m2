@@ -29,8 +29,8 @@ export class Login extends React.PureComponent<Props> {
                     </Col>
                     <Col className={`${c}-col ${c}-col-right`}>
                         <div className={`${c}-col-right-container`}>
-                            <div className="cd2h-logo-wrapper">
-                                <img className="cd2h-logo" src={process.env.PUBLIC_URL + '/cd2h-logo.png'} alt="cd2h logo" />
+                            <div className="uw-logo-wrapper">
+                                <img className="uw-logo" src={process.env.PUBLIC_URL + '/uw-logo.png'} alt="uw logo" />
                             </div>
                             <LoginBox 
                                 dispatch={dispatch}
