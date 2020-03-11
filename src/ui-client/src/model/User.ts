@@ -34,10 +34,12 @@ export type AnswerField =
     'ehr_q4___6'          |
     'ehr_q4___7'          |
     'ehr_q4___8'          |
+    'ehr_q4_1'            |
     'ehr_q4_1___1'        |
     'ehr_q4_1___2'        |
     'ehr_q4_1___3'        |
     'ehr_q4_1___4'        |
+    'ehr_q4_2'            |
     'ehr_q4_2___1'        |
     'ehr_q4_2___2'        |
     'ehr_q4_2___3'        |
@@ -50,6 +52,7 @@ export type AnswerField =
     'ehr_q4_2___10'       |
     'ehr_q4_2___11'       |
     'ehr_q4_2___12'       |
+    'ehr_q4_3'            |
     'ehr_q4_3___1'        |
     'ehr_q4_3___2'        |
     'ehr_q4_3___3'        |
@@ -84,6 +87,7 @@ export type AnswerField =
     'ehr_q10___6'         |
     'ehr_q10___7'         |
     'ehr_q10___8'         |
+    'ehr_q10_1'           |
     'ehr_q10_1___1'       |
     'ehr_q10_1___2'       |
     'ehr_q10_1___3'       |
@@ -91,11 +95,13 @@ export type AnswerField =
     'ehr_q10_1___5'       |
     'ehr_q10_1___6'       |
     'ehr_q10_1___7'       |
+    'ehr_q10_2'           |
     'ehr_q10_2___1'       |
     'ehr_q10_2___2'       |
     'ehr_q10_2___3'       |
     'ehr_q10_2___4'       |
     'ehr_q10_2___5'       |
+    'ehr_q10_3'           |
     'ehr_q10_3___1'       |
     'ehr_q10_3___2'       |
     'ehr_q10_3___3'       |

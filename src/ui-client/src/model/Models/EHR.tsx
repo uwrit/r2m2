@@ -17,30 +17,32 @@ export const EHR: BaseModel =
         type: QuestionType.SingleAnswer,
         options: [
                 {
-            text: "Do not currently use an EHR and have no plans to implement an EHR.",
+            text: "We do not currently use an EHR and have no plans to implement an EHR.",
             value: '1'
                 },
                 {
-            text: "Do not currently use an EHR, but plan to implement an EHR in the next 1-3 years.",
+            text: "We do not currently use an EHR, but plan to implement an EHR in the next 1-3 years.",
             value: '2'
                 },
                 {
-            text: "Do not currently use an EHR, but are in the process of implementing an EHR to go live within 6 months to a year.",
+            text: "We do not currently use an EHR, but are in the process of implementing an EHR to go live within 6 months to a year.",
             value: '3'
                 },
                 {
-            text: "Currently use an EHR in a limited manner (i.e. for outpatient care only or for billing purposes).",
+            text: "We currently use an EHR in a limited manner (i.e. for outpatient care only or for billing purposes).",
             value: '4'
                 },
                 {
-            text: "Currently use an EHR fully (i.e. for all patient and administratively related care).",
+            text: "We currently use an EHR fully (i.e. for all patient and administratively related care).",
             value: '5'
                 }
             ]
         },
         {
         answerField: 'ehr_q2',
+        shouldRender: (answers: UserAnswers) => new Set(['4','5']).has(answers['ehr_q1']),
         text: "What EHR system does your institution currently use?",
+        type: QuestionType.SingleAnswer,
         options: [
                 {
             text: "Allscripts",
@@ -67,10 +69,12 @@ export const EHR: BaseModel =
             value: '6'
                 },
                 {
+            freeText: true,
             text: "Other (please specify)",
             value: '7'
                 },
                 {
+            freeText: true,
             text: "Combination (please specify)",
             value: '8'
                 }
@@ -79,20 +83,23 @@ export const EHR: BaseModel =
         {
         answerField: 'ehr_q3',
         text: "Choose the statement that best describes your institution’s current Research activity in the EHR:", 
+        type: QuestionType.SingleAnswer,
         options: [
                 {
-            text: "Do not allow research activity (such as recruitment through a patient portal, research documentation, research billing etc.) in the EHR (does not include data exports).",
+            text: "We do not allow research activity (such as recruitment through a patient portal, research documentation, research billing etc.) in the EHR (does not include data exports).",
             value: '1'
                 },
                 {
-            text: "Allow research activity (such as recruitment through a patient portal, research documentation, research billing, etc.) in the EHR.",
+            text: "We allow research activity (such as recruitment through a patient portal, research documentation, research billing, etc.) in the EHR.",
             value: '2'
                 }
             ]
         },
         {
         answerField: 'ehr_q4',
+        shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2',
         text: "What research activities are performed in your institution’s EHR? (Select all that apply):",
+        type: QuestionType.MultipleAnswer,
         options: [
                 {
             text: "Security/Access for Research Users",
@@ -127,6 +134,26 @@ export const EHR: BaseModel =
             value: '8'        
                 }
 
+            ]
+        },
+        {
+        answerField: 'ehr_q4_1',
+        shouldRender: (answers: UserAnswers) => answers['ehr_q4___1'] === '1',
+        text: <span>What research activities are performed in your institution’s EHR <strong>regarding Security/Access for Research Users</strong>? (Select all that apply)</span>,
+        type: QuestionType.MultipleAnswer,
+        options: [
+                {
+            text: "Research specific user access templates / subtemplates",
+            value: '1'
+                },
+                {
+            text: "Research specific security classes",
+            value: '2'
+                },
+                {
+            text: "Virtual Access for external research users not affiliated with your institution Virtual Access for external research monitor",
+            value: '3'
+                }
             ]
         },
         {

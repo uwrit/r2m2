@@ -23,6 +23,7 @@ export interface ModelQuestion {
 }
 
 export interface ModelQuestionOption {
+    freeText?: boolean;
     text: string | JSX.Element | JSX.Element[];
     value: LikertStringOneToFive | LikertStringOneToEight;
     children?: ModelQuestionOption[];
