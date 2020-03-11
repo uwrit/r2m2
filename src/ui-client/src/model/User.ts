@@ -2,25 +2,110 @@ import { AnswerTypes } from "./ModelsState";
 
 export type AnswerField =
 
-    // User name
+    /* 
+     * User
+     */
     'user_fname'          |
     'user_lname'          |
     'email'               |
     'user_complete'       |
 
-    // EHR
+    /* 
+     * EHR
+     */
     'ehr_complete'        |
+
+    // EHR Use
     'ehr_q1'              |
+
+    // EHR System
     'ehr_q2'              |
+
+    // Research Activity in EHR
     'ehr_q3'              |
+
+    // Research Activities in EHR
     'ehr_q4'              |
+    'ehr_q4___1'          |
+    'ehr_q4___2'          |
+    'ehr_q4___3'          |
+    'ehr_q4___4'          |
+    'ehr_q4___5'          |
+    'ehr_q4___6'          |
+    'ehr_q4___7'          |
+    'ehr_q4___8'          |
+    'ehr_q4_1'            |
+    'ehr_q4_1___1'        |
+    'ehr_q4_1___2'        |
+    'ehr_q4_1___3'        |
+    'ehr_q4_1___4'        |
+    'ehr_q4_2'            |
+    'ehr_q4_2___1'        |
+    'ehr_q4_2___2'        |
+    'ehr_q4_2___3'        |
+    'ehr_q4_2___4'        |
+    'ehr_q4_2___5'        |
+    'ehr_q4_2___6'        |
+    'ehr_q4_2___7'        |
+    'ehr_q4_2___8'        |
+    'ehr_q4_2___9'        |
+    'ehr_q4_2___10'       |
+    'ehr_q4_2___11'       |
+    'ehr_q4_2___12'       |
+    'ehr_q4_3'            |
+    'ehr_q4_3___1'        |
+    'ehr_q4_3___2'        |
+    'ehr_q4_3___3'        |
+    'ehr_q4_3___4'        |
+    'ehr_q4_3___5'        |
+    
+    // Staffing Model
     'ehr_q5'              |
+
+    // Individuals in IT that support Research
     'ehr_q6a'             |
+
+    // Individuals in institution that support Research
     'ehr_q6b'             |
+
+    // Avg % effort in EHR
     'ehr_q7'              |
+
+    // Embedded Research EHR
     'ehr_q8'              |
+
+    // Dedicated Research EHR
     'ehr_q9'              |
-    'ehr_q10'             
+
+    // Epic Certifications
+    'ehr_q10'             |
+    'ehr_q10___1'         |
+    'ehr_q10___2'         |
+    'ehr_q10___3'         |
+    'ehr_q10___4'         |
+    'ehr_q10___5'         |
+    'ehr_q10___6'         |
+    'ehr_q10___7'         |
+    'ehr_q10___8'         |
+    'ehr_q10_1'           |
+    'ehr_q10_1___1'       |
+    'ehr_q10_1___2'       |
+    'ehr_q10_1___3'       |
+    'ehr_q10_1___4'       |
+    'ehr_q10_1___5'       |
+    'ehr_q10_1___6'       |
+    'ehr_q10_1___7'       |
+    'ehr_q10_2'           |
+    'ehr_q10_2___1'       |
+    'ehr_q10_2___2'       |
+    'ehr_q10_2___3'       |
+    'ehr_q10_2___4'       |
+    'ehr_q10_2___5'       |
+    'ehr_q10_3'           |
+    'ehr_q10_3___1'       |
+    'ehr_q10_3___2'       |
+    'ehr_q10_3___3'       |
+    'ehr_q10_3___4'
 
 
 export interface BaseUserAnswers {
