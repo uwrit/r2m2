@@ -2,24 +2,30 @@ import { UserAnswers, AnswerField } from "./User"
 
 export interface BaseModel {
     completeField: AnswerField;
-    // description: string;
     name: string;
     shortName: string;
     questions: ModelQuestion[];
     render: (dispatch: any, answers: UserAnswers) => JSX.Element;
     selected?: boolean;
-    url?: string;
 }
 
 export interface ModelQuestion {
     answerField: AnswerField;
     options: ModelQuestionOption[];
     text: string | JSX.Element;
+    type: QuestionType;
+
+    // Optional. If present, called on load. Must return an array of ModelQuestionOptions.
+    getOptions?: (answers: UserAnswers) => ModelQuestionOption[];
+
+    // Optional. If present, called on load. If True, Question is shown, else skipped.
+    shouldRender?: (answers: UserAnswers) => boolean;
 }
 
 export interface ModelQuestionOption {
     text: string | JSX.Element | JSX.Element[];
-    value: LikertStringOneToFive | LikertStringOneToSeven;
+    value: LikertStringOneToFive | LikertStringOneToEight;
+    children?: ModelQuestionOption[];
 }
 
 export interface ModelsState {
@@ -28,6 +34,7 @@ export interface ModelsState {
 }
 
 export type LikertStringOneToFive = '' | '1' | '2' | '3' | '4' | '5'
-export type LikertStringOneToSeven = LikertStringOneToFive | '6' | '7' | '8'
+export type LikertStringOneToEight = LikertStringOneToFive | '6' | '7' | '8'
 export enum FormState { NotStarted = '0', Started = '1', Complete = '2' }
-export type AnswerTypes = LikertStringOneToFive | LikertStringOneToSeven | FormState
+export enum QuestionType { SingleAnswer = 0, MultipleAnswer = 0 }
+export type AnswerTypes = LikertStringOneToFive | LikertStringOneToEight | FormState

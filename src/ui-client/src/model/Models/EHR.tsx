@@ -1,5 +1,5 @@
 import React from "react";
-import { BaseModel } from "../ModelsState";
+import { BaseModel, QuestionType } from "../ModelsState";
 import { UserAnswers } from "../User";
 import { EHRForm } from "../../components/Models/EHR";
 
@@ -14,6 +14,7 @@ export const EHR: BaseModel =
         {
         answerField: 'ehr_q1',
         text: "Choose the statement that best describes your institution’s current Electronic Health Record (EHR) use:", 
+        type: QuestionType.SingleAnswer,
         options: [
                 {
             text: "Do not currently use an EHR and have no plans to implement an EHR.",
