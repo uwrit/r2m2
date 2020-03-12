@@ -28,12 +28,12 @@ export default class ModelOption extends React.PureComponent<Props,State> {
         return (
             <div className={classes.join(' ')} onClick={this.handleClick}>
                 <div className={`${c}-value`}>{data.value}</div>
-                {data.freeText
+                {!data.freeText
                 // Need to figure out how to save free text
-                    ? <div className={`${c}-text`}>
-                        <input value={this.state.text} onChange={this.handleTextChange}/>
-                      </div>
-                    : <div className={`${c}-text`}>{data.text}</div>
+                    ? <div className={`${c}-text`}>{data.text}</div>
+                    : <div className={`${c}-text`}>
+                        <input value={this.state.text} onChange={this.handleTextChange} placeholder={data.text.toString()}/>
+                     </div>
                 }
             </div>
         );
