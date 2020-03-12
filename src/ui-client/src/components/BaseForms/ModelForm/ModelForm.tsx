@@ -3,7 +3,7 @@ import ModelOption from '../../BaseForms/ModelOption/ModelOption';
 import { userSetAnswers, userUpdateServerData } from '../../../actions/user';
 import { UserAnswers } from '../../../model/User';
 import ModelTransitionForm from '../../BaseForms/ModelTransitionForm/ModelTransitionForm';
-import { BaseModel, FormState } from '../../../model/ModelsState';
+import { BaseModel, FormState, ModelQuestionOption, ModelQuestion, QuestionType, AnswerTypes } from '../../../model/ModelsState';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import NextStepBox from '../NextStepBox/NextStepBox';
 import { setCurrentView } from '../../../actions/general';
@@ -88,17 +88,32 @@ export class ModelForm extends React.PureComponent<Props,State> {
         return (
             <ModelTransitionForm 
                 header={q.text}
-                content={q.options.map((o,i) => (
+                content={this.getOptions(q, answers).map((o,i) => (
                     <ModelOption 
                         key={i} data={o} 
                         onClick={this.handleAnswerClick} 
-                        selected={o.value === currAnswer} 
+                        selected={this.setIsSelected(q, o, answers, currAnswer)} 
                     />)
                 )}
                 cornerInfo={cornerInfo}
                 onGoBackClick={this.handleGoBackClick}
             />
         );
+    }
+
+    private setIsSelected = (q: ModelQuestion, o: ModelQuestionOption, answers: UserAnswers, currAnswer: AnswerTypes): boolean => {
+        if (q.type === QuestionType.SingleAnswer) {
+            return o.value === currAnswer;
+        }
+        const checkboxAnswer = `${q.answerField}___${o.value}`;
+        return answers[checkboxAnswer] === '1';
+    }
+
+    private getOptions = (q: ModelQuestion, a: UserAnswers): ModelQuestionOption[] => {
+        if (q.getOptions) {
+            return q.getOptions(a);
+        }
+        return q.options;
     }
 
     private handleGetStartedClick = () => {
@@ -118,8 +133,8 @@ export class ModelForm extends React.PureComponent<Props,State> {
         const { dispatch, answers, model } = this.props;
         const { questionIndex } = this.state;
         const total = model.questions.length;
-        const isLast = questionIndex === total;
         const isFirst = questionIndex === 1;
+        const isLast = questionIndex === total;
         const alreadyCompleted = answers[model.completeField] === FormState.Complete;
 
         /* 
@@ -133,6 +148,18 @@ export class ModelForm extends React.PureComponent<Props,State> {
         dispatch(userSetAnswers(cpy));
 
         /*
+         * If this question accepts a single answer only, check what to render next.
+         */
+        if (question.type === QuestionType.SingleAnswer) {
+            this.handleSingleAnswerClick(isFirst, isLast, total);
+        }
+    }
+
+    private handleSingleAnswerClick = (isFirst: boolean, isLast: boolean, total: number) => {
+        const { dispatch, answers, model } = this.props;
+        const { questionIndex } = this.state;
+
+        /*
          * If the form is complete or started and there is more than one question, 
          * update data on the server.
          */
@@ -141,8 +168,28 @@ export class ModelForm extends React.PureComponent<Props,State> {
         }
         
         /*
-         * Move to next question.
+         * Move to next relevant question.
          */
-        this.setState({ questionIndex: questionIndex + 1 })
+        let i = questionIndex+1;
+        while (i < total) {
+            const next = model.questions[i];
+
+            /* 
+             * If has a shouldRender() function, run and set as question if true.
+             */
+            if (next.shouldRender) {
+                if (next.shouldRender(answers)) {
+                    this.setState({ questionIndex: i });
+                    return;
+                }
+            /*
+             * Else move to next question.
+             */
+            } else {
+                this.setState({ questionIndex: i });
+                return;
+            }
+        }
+        this.setState({ questionIndex: total })
     }
 }
