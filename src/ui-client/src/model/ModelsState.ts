@@ -16,7 +16,7 @@ export interface ModelQuestion {
 
     type: QuestionType; // If 
                         //    SingleAnswer:   Renders normally and the clicked value is assigned to this question
-                        //    MultipleAnswer: Use can select multiple and a 'Next' button is shown in lower right.
+                        //    MultipleAnswer: Users can select multiple and a 'Next' button is shown in lower right.
                         //                    ALSO: Each clicked value updates the [UserAnswers] with the [ModelQuestion].[AnswerField] + "___" + [ModelQuestionOption].[value] = 1, to mimic REDCap.
                         //                    EXAMPLE: [ModelQuestion].[AnswerField] = 'ehr_q4_1'
                         //                             [ModelQuestionOption].[value] = '1'
@@ -32,8 +32,7 @@ export interface ModelQuestion {
 export interface ModelQuestionOption {
     freeText?: boolean;
     text: string | JSX.Element | JSX.Element[];
-    value: LikertStringOneToFive | LikertStringOneToEight;
-    children?: ModelQuestionOption[];
+    value: LikertStringOneToSixty;
 }
 
 export interface ModelsState {
@@ -41,8 +40,12 @@ export interface ModelsState {
     current?: BaseModel;
 }
 
-export type LikertStringOneToFive = '' | '1' | '2' | '3' | '4' | '5'
-export type LikertStringOneToEight = LikertStringOneToFive | '6' | '7' | '8'
+export type LikertStringOneToSixty = '' | '1'  | '2'  | '3'  | '4'  | '5'  | '6'  | '7'  | '8'  | '9'  | '10'
+                                        | '11' | '12' | '13' | '14' | '15' | '16' | '17' | '18' | '19' | '20'
+                                        | '21' | '22' | '23' | '24' | '25' | '26' | '27' | '28' | '29' | '30'
+                                        | '31' | '32' | '33' | '34' | '35' | '36' | '37' | '38' | '39' | '40'
+                                        | '41' | '42' | '43' | '44' | '45' | '46' | '47' | '48' | '49' | '50'
+                                        | '51' | '52' | '53' | '54' | '55' | '56' | '57' | '58' | '59' | '60'
 export enum FormState { NotStarted = '0', Started = '1', Complete = '2' }
 export enum QuestionType { SingleAnswer = 0, MultipleAnswer = 0 }
-export type AnswerTypes = LikertStringOneToFive | LikertStringOneToEight | FormState
+export type AnswerTypes = LikertStringOneToSixty | FormState
