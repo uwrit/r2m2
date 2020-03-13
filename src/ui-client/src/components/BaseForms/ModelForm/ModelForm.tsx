@@ -127,7 +127,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         this.setState({ questionIndex: this.startingState + 1 })
     }
 
-    private handleGoBackClick = () => {
+    private getPreviousRelevantQuestion = (): number => {
         const { answers, model } = this.props;
         const { questionIndex } = this.state;
 
@@ -138,23 +138,53 @@ export class ModelForm extends React.PureComponent<Props,State> {
         while (i > 0) {
             const prev = model.questions[i];
             /* 
-             * If has a shouldRender() function, run and set as question if true.
+             * If has a shouldRender() function, run and return this question if true.
              */
             if (prev.shouldRender) {
                 if (prev.shouldRender(answers)) {
-                    this.setState({ questionIndex: i });
-                    return;
+                    return i;
                 }
                 i--;
                 continue;
             }
             /*
-             * Else move to this question.
+             * Else this question.
              */
-            this.setState({ questionIndex: i });
-            return;
+            return i;
         }
-        this.setState({ questionIndex: 0 })
+        return 0;
+    }
+
+    private getFollowingRelevantQuestion = (): number => {
+        const { answers, model } = this.props;
+        const { questionIndex } = this.state;
+
+        /*
+         * Move to next relevant question.
+         */
+        let i = questionIndex+1;
+        while (i < model.questions.length) {
+            const next = model.questions[i];
+            /* 
+             * If has a shouldRender() function, run and return this question if true.
+             */
+            if (next.shouldRender) {
+                if (next.shouldRender(answers)) {
+                    return i;
+                }
+                i++;
+                continue;
+            }
+            /*
+             * Else return next question.
+             */
+            return i;
+        }
+        return model.questions.length-1;
+    }
+
+    private handleGoBackClick = () => {
+        this.setState({ questionIndex: this.getPreviousRelevantQuestion() })
     }
 
     private handleReturnHomeClick = () => {
@@ -163,10 +193,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
     }
 
     private handleNextClick = () => {
-        const { dispatch } = this.props;
-
-        dispatch(userUpdateServerData());
-        this.setState({ questionIndex: this.state.questionIndex + 1 })
+        this.setState({ questionIndex: this.getFollowingRelevantQuestion() });
     }
 
     private handleAnswerClick = (value: any) => {
@@ -237,8 +264,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
     }
 
     private handleSingleAnswerClick = (isFirst: boolean, isLast: boolean, total: number) => {
-        const { dispatch, answers, model } = this.props;
-        const { questionIndex } = this.state;
+        const { dispatch } = this.props;
 
         /*
          * If the form is complete or started and there is more than one question, 
@@ -248,30 +274,6 @@ export class ModelForm extends React.PureComponent<Props,State> {
             dispatch(userUpdateServerData());
         }
         
-        /*
-         * Move to next relevant question.
-         */
-        let i = questionIndex+1;
-        while (i < total) {
-            const next = model.questions[i];
-            /* 
-             * If has a shouldRender() function, run and set as question if true.
-             */
-            if (next.shouldRender) {
-                if (next.shouldRender(answers)) {
-                    this.setState({ questionIndex: i });
-                    return;
-                }
-                i++;
-                continue;
-            }
-            /*
-             * Else move to next question.
-             */
-            this.setState({ questionIndex: i });
-            return;
-        }
-        this.setState({ questionIndex: total });
-        this.setState({ questionIndex: i })
+        this.setState({ questionIndex: this.getFollowingRelevantQuestion() });
     }
 }
