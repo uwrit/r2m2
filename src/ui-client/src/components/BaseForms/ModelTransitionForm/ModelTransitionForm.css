@@ -50,48 +50,34 @@
     z-index: 100;
 }
 
+.maturity-model-button.secondary {
+    bottom: 0;
+    margin: 10px;
+    min-width: 100px !important;
+    position: absolute;
+    width: 100px !important;
+}
+
 .model-transition-form .maturity-model-button.primary-green {
     margin-top: 40px;
 }
 
-.model-transition-form .maturity-model-button.secondary {
-    bottom: 0;
+.model-transition-form .maturity-model-button.secondary.prev {
     left: 0;
-    margin: 10px;
-    min-width: 100px !important;
-    position: absolute;
-    width: 100px !important;
 }
 
-.model-transition-form .maturity-model-button.secondary svg {
+.model-transition-form .maturity-model-button.secondary.prev svg {
     margin-left: -8px;
 }
 
-.model-transition-form .form {
-    opacity: 1 !important;
-}
-
 .model-transition-form .maturity-model-button.next {
-    bottom: 0;
     right: 0;
-    margin: 10px;
-    min-width: 100px !important;
-    position: absolute;
-    width: 100px !important;
 }
 
 .model-transition-form .maturity-model-button.next svg {
     margin-right: -8px;
 }
 
-.maturity-model-button.next {
-    background-color: rgba(28,168,221,0.1);
-    color: #29acf8;
-    font-size: 1.2rem;
-    min-height: 40px;
+.model-transition-form .form {
+    opacity: 1 !important;
 }
-
-/* .maturity-model-button {
-    background-color: #0086d3;
-    transition: background-color 0.3s;
-} */

@@ -40,38 +40,37 @@ export const EHR: BaseModel =
         {
             answerField: 'ehr_q2',
             shouldRender: (answers: UserAnswers) => new Set(['4', '5']).has(answers['ehr_q1']),
-            text: "What EHR system does your institution currently use?",
+            text: "What EHR system(s) does your institution currently use?",
             type: QuestionType.MultipleAnswer,
             options: [
                 {
+                    answerField: 'ehr_q2___1',
                     text: "Allscripts",
-                    value: '1'
                 },
                 {
+                    answerField: 'ehr_q2___2',
                     text: "Cerner",
-                    value: '2'
                 },
                 {
+                    answerField: 'ehr_q2___3',
                     text: "CPSI",
-                    value: '3'
                 },
                 {
+                    answerField: 'ehr_q2___4',
                     text: "Epic",
-                    value: '4'
                 },
                 {
+                    answerField: 'ehr_q2___5',
                     text: "Medhost",
-                    value: '5'
                 },
                 {
+                    answerField: 'ehr_q2___6',
                     text: "Meditech",
-                    value: '6'
                 },
                 {
                     answerField: 'ehr_q2_1',
                     freeText: true,
                     text: "Other (please specify)",
-                    value: '7'
                 }
             ]
         },
