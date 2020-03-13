@@ -44,26 +44,32 @@ export const EHR: BaseModel =
             type: QuestionType.MultipleAnswer,
             options: [
                 {
+                    answerField: 'ehr_q2___1',
                     text: "Allscripts",
                     value: '1'
                 },
                 {
+                    answerField: 'ehr_q2___2',
                     text: "Cerner",
                     value: '2'
                 },
                 {
+                    answerField: 'ehr_q2___3',
                     text: "CPSI",
                     value: '3'
                 },
                 {
+                    answerField: 'ehr_q2___4',
                     text: "Epic",
                     value: '4'
                 },
                 {
+                    answerField: 'ehr_q2___5',
                     text: "Medhost",
                     value: '5'
                 },
                 {
+                    answerField: 'ehr_q2___6',
                     text: "Meditech",
                     value: '6'
                 },

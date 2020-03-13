@@ -41,13 +41,25 @@ export default class ModelOption extends React.PureComponent<Props,State> {
 
     private handleClick = () => {
         const { data, onClick } = this.props;
+        const val = {
+            answerField: data.answerField,
+            freeText: data.freeText,
+            text: data.text,
+            value: data.value 
+        };
 
         if (!data.freeText) {
-            onClick(data.value);            
+            onClick(val);            
         } else {
-            const val = {value: data.value, text: this.state.text, freeText: true};
+            const val = {
+                answerField: data.answerField,
+                freeText: data.freeText,
+                text: this.state.text,
+                value: data.value 
+            };
             onClick(val);
         }
+        // onClick(val);
     }
 
     private handleTextChange = (e: React.FormEvent<HTMLInputElement>) => {

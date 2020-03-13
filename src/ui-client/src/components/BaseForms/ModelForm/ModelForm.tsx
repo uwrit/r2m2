@@ -23,6 +23,7 @@ interface State {
 export class ModelForm extends React.PureComponent<Props,State> {
     private className = 'model-form';
     private startingState = 0;
+    private preventTransition = false;
 
     public constructor(props: Props) {
         super(props);
@@ -96,13 +97,14 @@ export class ModelForm extends React.PureComponent<Props,State> {
                 content={this.getOptions(q, answers).map((o,i) => (
                     <ModelOption 
                         key={i} data={o}
-                        onClick={this.handleAnswerClick} 
+                        // onClick={this.handleAnswerClick} 
+                        onClick={this.getAnswerClickHandler(q)}
                         selected={this.setIsSelected(q, o, answers, currAnswer)} 
                     />)
                 )}
                 cornerInfo={cornerInfo}
                 onGoBackClick={this.handleGoBackClick}
-                onNextClick={this.handleNextClick}
+                onNextClick={q.type === QuestionType.MultipleAnswer ? this.handleNextClick : undefined}
             />
         );
     }
@@ -126,8 +128,64 @@ export class ModelForm extends React.PureComponent<Props,State> {
         this.setState({ questionIndex: this.startingState + 1 })
     }
 
+    private getPreviousRelevantQuestion = (): number => {
+        const { answers, model } = this.props;
+        const { questionIndex } = this.state;
+
+        /*
+         * Move to previous relevant question.
+         */
+        let i = questionIndex-1;
+        while (i > 0) {
+            const prev = model.questions[i];
+            /* 
+             * If has a shouldRender() function, run and return this question if true.
+             */
+            if (prev.shouldRender) {
+                if (prev.shouldRender(answers)) {
+                    return i;
+                }
+                i--;
+                continue;
+            }
+            /*
+             * Else this question.
+             */
+            return i;
+        }
+        return 0;
+    }
+
+    private getFollowingRelevantQuestion = (): number => {
+        const { answers, model } = this.props;
+        const { questionIndex } = this.state;
+
+        /*
+         * Move to next relevant question.
+         */
+        let i = questionIndex+1;
+        while (i < model.questions.length) {
+            const next = model.questions[i];
+            /* 
+             * If has a shouldRender() function, run and return this question if true.
+             */
+            if (next.shouldRender) {
+                if (next.shouldRender(answers)) {
+                    return i;
+                }
+                i++;
+                continue;
+            }
+            /*
+             * Else return next question.
+             */
+            return i;
+        }
+        return model.questions.length-1;
+    }
+
     private handleGoBackClick = () => {
-        this.setState({ questionIndex: this.state.questionIndex - 1 })
+        this.setState({ questionIndex: this.getPreviousRelevantQuestion() })
     }
 
     private handleReturnHomeClick = () => {
@@ -136,13 +194,25 @@ export class ModelForm extends React.PureComponent<Props,State> {
     }
 
     private handleNextClick = () => {
-        const { dispatch } = this.props;
-
-        dispatch(userUpdateServerData());
-        this.setState({ questionIndex: this.state.questionIndex + 1 })
+        this.setState({ questionIndex: this.getFollowingRelevantQuestion() });
     }
 
-    private handleAnswerClick = (value: any) => {
+
+    private getAnswerClickHandler = (q: ModelQuestion) => {
+        const { dispatch, answers, model } = this.props;
+        const { questionIndex } = this.state;
+        const total = model.questions.length;
+        const isFirst = questionIndex === 1;
+        const isLast = questionIndex === total;
+        const alreadyCompleted = answers[model.completeField] === FormState.Complete;
+
+        const question = model.questions[questionIndex-1];
+        if (q.type === QuestionType.MultipleAnswer) {
+            return this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
+        }
+    }
+
+    private handleAnswerClick = (value: ModelQuestionOption) => {
         const { dispatch, answers, model } = this.props;
         const { questionIndex } = this.state;
         const total = model.questions.length;
@@ -154,14 +224,6 @@ export class ModelForm extends React.PureComponent<Props,State> {
         /*
          * 
          */
-        if (value['freeText']) {
-        //     const cpy = Object.assign({}, answers, {
-        //         [question.answerField]: value,
-        //         [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-        //     }) as UserAnswers;
-        //     dispatch(userSetAnswers(cpy));
-            return;
-        };
 
         /* 
          * Update store with the answer.
@@ -176,41 +238,48 @@ export class ModelForm extends React.PureComponent<Props,State> {
          * If this question accepts a single answer only, check what to render next.
          */
         if (question.type === QuestionType.SingleAnswer) {
-            const cpy = Object.assign({}, answers, {
-                [question.answerField]: value,
-                [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-            }) as UserAnswers;
-            dispatch(userSetAnswers(cpy));
+            
             this.handleSingleAnswerClick(isFirst, isLast, total);
             return;
         }
 
-        this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
+        // this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
     }
 
-    private handleMultipleAnswerClick = (value: any, isLast: boolean, alreadyCompleted: boolean) => {
+    private handleMultipleAnswerClick = (value: ModelQuestionOption, isLast: boolean, alreadyCompleted: boolean) => {
         const { dispatch, answers, model } = this.props;
-        const { questionIndex } = this.state;
 
-        const question = model.questions[questionIndex-1];
-        const cpy = Object.assign({}, answers, { 
-            [`${question.answerField}___${value}`]: '1',
-            [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-        }) as UserAnswers;
-        dispatch(userSetAnswers(cpy));
-        // dispatch(userUpdateServerData());
+        if (value.freeText && value.answerField) {
+            const cpy = Object.assign({}, answers, { 
+                [value.answerField]: value.text,
+                [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
+            }) as UserAnswers;
+            dispatch(userSetAnswers(cpy));
+            return;
+        }
+
+        if (value.answerField) {
+            const cpy = Object.assign({}, answers, { 
+                [value.answerField]: '1',
+                [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
+            }) as UserAnswers;
+            dispatch(userSetAnswers(cpy));
+        }
         // return;
-
-
-
-
-
     }
 
     private handleSingleAnswerClick = (isFirst: boolean, isLast: boolean, total: number) => {
         const { dispatch, answers, model } = this.props;
         const { questionIndex } = this.state;
+        const alreadyCompleted = answers[model.completeField] === FormState.Complete;
 
+        const question = model.questions[questionIndex-1];
+
+        const cpy = Object.assign({}, answers, {
+            [question.answerField]: value,
+            [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
+        }) as UserAnswers;
+        dispatch(userSetAnswers(cpy));
         /*
          * If the form is complete or started and there is more than one question, 
          * update data on the server.
@@ -219,30 +288,6 @@ export class ModelForm extends React.PureComponent<Props,State> {
             dispatch(userUpdateServerData());
         }
         
-        /*
-         * Move to next relevant question.
-         */
-        let i = questionIndex+1;
-        while (i < total) {
-            const next = model.questions[i];
-            /* 
-             * If has a shouldRender() function, run and set as question if true.
-             */
-            if (next.shouldRender) {
-                if (next.shouldRender(answers)) {
-                    this.setState({ questionIndex: i });
-                    return;
-                }
-                i++;
-                continue;
-            }
-            /*
-             * Else move to next question.
-             */
-            this.setState({ questionIndex: i });
-            return;
-        }
-        this.setState({ questionIndex: total });
-        this.setState({ questionIndex: i })
+        this.setState({ questionIndex: this.getFollowingRelevantQuestion() });
     }
 }
