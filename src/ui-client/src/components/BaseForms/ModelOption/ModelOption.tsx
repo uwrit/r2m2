@@ -4,17 +4,13 @@ import './ModelOption.css';
 
 interface Props {
     data: ModelQuestionOption;
-    onClick: (value: any) => any;
+    changedHandler?: (value: any) => any;
+    clickHandler: (value: any) => any;
     selected: boolean;
 }
 
-interface State {
-    text: string;
-}
-
-export default class ModelOption extends React.PureComponent<Props,State> {
+export default class ModelOption extends React.PureComponent<Props> {
     private className = 'model-option';
-    state = { text: '' };
 
     public render() {
         const c = this.className;
@@ -32,25 +28,20 @@ export default class ModelOption extends React.PureComponent<Props,State> {
                     ? <div className={`${c}-text`}>{data.text}</div>
                     : <div className={`${c}-text`}>
                         {data.text}
-                        <input className={`${c}-text-input`} value={this.state.text} onChange={this.handleTextChange}/>
+                        <input className={`${c}-text-input`} value={data.value} onChange={this.handleInputChange}/>
                      </div>
                 }
             </div>
         );
-    }   
-
-    private handleClick = () => {
-        const { data, onClick } = this.props;
-
-        if (!data.freeText) {
-            onClick(data.value);            
-        } else {
-            const val = {value: data.value, text: this.state.text, freeText: true};
-            onClick(val);
-        }
     }
 
-    private handleTextChange = (e: React.FormEvent<HTMLInputElement>) => {
-        this.setState({ text: e.currentTarget.value });
+    private handleClick = () => {
+        const { clickHandler, data } = this.props;
+        clickHandler(data.value);
+    }
+
+    private handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
+        const { changedHandler } = this.props;
+        changedHandler!(e.currentTarget.value);
     }
 }

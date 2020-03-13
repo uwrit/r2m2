@@ -22,13 +22,13 @@ interface State {
 
 export class ModelForm extends React.PureComponent<Props,State> {
     private className = 'model-form';
-    private startingState = 0;
-    private preventTransition = false;
+    private startingQuestionIndex = -1;
+    private enableTransition = true;
 
     public constructor(props: Props) {
         super(props);
         this.state = {
-            questionIndex: this.startingState
+            questionIndex: this.startingQuestionIndex
         };
     }
 
@@ -36,12 +36,12 @@ export class ModelForm extends React.PureComponent<Props,State> {
         const c = this.className;
         const { answers, model } = this.props;
         const { questionIndex } = this.state;
-        const cornerInfo = `${questionIndex} / ${model.questions.length}`;
+        const cornerInfo = `${questionIndex+1} / ${model.questions.length}`;
 
         /*
          * If in starting state, show the model description and 'Get Started' button.
          */
-        if (questionIndex === this.startingState) {
+        if (questionIndex === this.startingQuestionIndex) {
             const completionState = answers[model.completeField];
             const buttonText = 
                 completionState === FormState.NotStarted ? 'Start Survey' :
@@ -61,16 +61,13 @@ export class ModelForm extends React.PureComponent<Props,State> {
                                 {buttonText}
                                 <FiChevronRight />
                             </button>
-                            <button className={`maturity-model-button secondary`} onClick={this.handleReturnHomeClick}>
+                            <button className={`maturity-model-button secondary prev`} onClick={this.handleReturnHomeClick}>
                                 <FiChevronLeft />   
                                 Go Back
                             </button>
-                            <button className={`maturity-model-button secondarynext`} onClick={this.handleNextClick}>
-                                Next
-                                <FiChevronRight />
-                            </button>
                         </div>
                     }
+                    enableTransition={this.enableTransition}
                 />
             );
         }
@@ -78,7 +75,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         /*
          * If in ending state OR question shouldRender is false, congratulate the user and allow them to move to next survey.
          */
-        if (questionIndex > model.questions.length) {
+        if (questionIndex === model.questions.length-1) {
             return (
                 <ModelTransitionForm 
                     header={`You've completed the ${model.name} survey!`}
@@ -89,7 +86,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
             );
         }
 
-        const q = model.questions[questionIndex-1];
+        const q = model.questions[questionIndex];
         const currAnswer = answers[q.answerField];
         return (
             <ModelTransitionForm 
@@ -97,23 +94,27 @@ export class ModelForm extends React.PureComponent<Props,State> {
                 content={this.getOptions(q, answers).map((o,i) => (
                     <ModelOption 
                         key={i} data={o}
-                        onClick={this.handleAnswerClick} 
+                        changedHandler={this.getAnswerChangeHandler(o)}
+                        clickHandler={this.getAnswerClickHandler(q, o)} 
                         selected={this.setIsSelected(q, o, answers, currAnswer)} 
                     />)
                 )}
                 cornerInfo={cornerInfo}
                 onGoBackClick={this.handleGoBackClick}
-                onNextClick={this.handleNextClick}
+                onNextClick={q.type === QuestionType.MultipleAnswer ? this.handleNextClick : undefined}
+                enableTransition={this.enableTransition}
             />
         );
     }
 
     private setIsSelected = (q: ModelQuestion, o: ModelQuestionOption, answers: UserAnswers, currAnswer: AnswerTypes): boolean => {
+        if (o.freeText) {
+            return !!answers[o.answerField!];
+        }
         if (q.type === QuestionType.SingleAnswer) {
             return o.value === currAnswer;
         }
-        const checkboxAnswer = `${q.answerField}___${o.value}`;
-        return answers[checkboxAnswer] === '1';
+        return answers[o.answerField!] === '1';
     }
 
     private getOptions = (q: ModelQuestion, a: UserAnswers): ModelQuestionOption[] => {
@@ -124,18 +125,18 @@ export class ModelForm extends React.PureComponent<Props,State> {
     }
 
     private handleGetStartedClick = () => {
-        this.setState({ questionIndex: this.startingState + 1 })
+        this.setState({ questionIndex: this.startingQuestionIndex + 1 })
     }
 
-    private getPreviousRelevantQuestion = (): number => {
-        const { answers, model } = this.props;
+    private getPreviousRelevantQuestion = (answers: UserAnswers): number => {
+        const { model } = this.props;
         const { questionIndex } = this.state;
 
         /*
          * Move to previous relevant question.
          */
         let i = questionIndex-1;
-        while (i > 0) {
+        while (i > this.startingQuestionIndex) {
             const prev = model.questions[i];
             /* 
              * If has a shouldRender() function, run and return this question if true.
@@ -152,11 +153,11 @@ export class ModelForm extends React.PureComponent<Props,State> {
              */
             return i;
         }
-        return 0;
+        return this.startingQuestionIndex;
     }
 
-    private getFollowingRelevantQuestion = (): number => {
-        const { answers, model } = this.props;
+    private getFollowingRelevantQuestion = (answers: UserAnswers): number => {
+        const { model } = this.props;
         const { questionIndex } = this.state;
 
         /*
@@ -184,7 +185,9 @@ export class ModelForm extends React.PureComponent<Props,State> {
     }
 
     private handleGoBackClick = () => {
-        this.setState({ questionIndex: this.getPreviousRelevantQuestion() })
+        const { answers } = this.props;
+        this.enableTransition = true;
+        this.setState({ questionIndex: this.getPreviousRelevantQuestion(answers) })
     }
 
     private handleReturnHomeClick = () => {
@@ -193,76 +196,60 @@ export class ModelForm extends React.PureComponent<Props,State> {
     }
 
     private handleNextClick = () => {
-        this.setState({ questionIndex: this.getFollowingRelevantQuestion() });
+        const { answers } = this.props;
+        this.enableTransition = true;
+        this.setState({ questionIndex: this.getFollowingRelevantQuestion(answers) });
     }
 
-    private handleAnswerClick = (value: any) => {
+    private noOpClickHandler = (value: any) => null;
+
+    private getAnswerChangeHandler = (o: ModelQuestionOption) => {
+        if (o.freeText) {
+            return (value: any) => this.handleAnswerTextChange(o, value);
+        }
+        return undefined;
+    }
+    
+    private getAnswerClickHandler = (q: ModelQuestion, o: ModelQuestionOption) => {
+        if (o.freeText) {
+            return this.noOpClickHandler;
+        }
+        if (q.type === QuestionType.SingleAnswer) {
+            return this.handleSingleAnswerClick;
+        }
+        return (value: any) => this.handleMultipleAnswerClick(o);
+    }
+
+    private handleMultipleAnswerClick = (o: ModelQuestionOption) => {
+        const { dispatch, answers, model } = this.props;
+        const { questionIndex } = this.state;
+        const total = model.questions.length;
+        const isLast = questionIndex === total;
+        const alreadyCompleted = answers[model.completeField] === FormState.Complete;
+
+        const cpy = Object.assign({}, answers, { 
+            [o.answerField!]: answers[o.answerField!] === '1' ? '0' : '1',
+            [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
+        }) as UserAnswers;
+        this.enableTransition = false;
+        dispatch(userSetAnswers(cpy));
+    }
+
+    private handleSingleAnswerClick = (value: any) => {
         const { dispatch, answers, model } = this.props;
         const { questionIndex } = this.state;
         const total = model.questions.length;
         const isFirst = questionIndex === 1;
         const isLast = questionIndex === total;
         const alreadyCompleted = answers[model.completeField] === FormState.Complete;
+        const question = model.questions[questionIndex];
 
-        const question = model.questions[questionIndex-1];
-        /*
-         * 
-         */
-        if (value['freeText']) {
-        //     const cpy = Object.assign({}, answers, {
-        //         [question.answerField]: value,
-        //         [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-        //     }) as UserAnswers;
-        //     dispatch(userSetAnswers(cpy));
-            return;
-        };
-
-        /* 
-         * Update store with the answer.
-         */
-        // const question = model.questions[questionIndex-1];
-        // const cpy = Object.assign({}, answers, {
-        //     [question.answerField]: value,
-        //     [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-        // }) as UserAnswers;
-        // dispatch(userSetAnswers(cpy));
-        /*
-         * If this question accepts a single answer only, check what to render next.
-         */
-        if (question.type === QuestionType.SingleAnswer) {
-            const cpy = Object.assign({}, answers, {
-                [question.answerField]: value,
-                [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-            }) as UserAnswers;
-            dispatch(userSetAnswers(cpy));
-            this.handleSingleAnswerClick(isFirst, isLast, total);
-            return;
-        }
-
-        this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
-    }
-
-    private handleMultipleAnswerClick = (value: any, isLast: boolean, alreadyCompleted: boolean) => {
-        const { dispatch, answers, model } = this.props;
-        const { questionIndex } = this.state;
-
-        const question = model.questions[questionIndex-1];
-        const cpy = Object.assign({}, answers, { 
-            [`${question.answerField}___${value}`]: '1',
+        this.enableTransition = true;
+        const cpy = Object.assign({}, answers, {
+            [question.answerField]: value,
             [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
         }) as UserAnswers;
         dispatch(userSetAnswers(cpy));
-        // dispatch(userUpdateServerData());
-        // return;
-
-
-
-
-
-    }
-
-    private handleSingleAnswerClick = (isFirst: boolean, isLast: boolean, total: number) => {
-        const { dispatch } = this.props;
 
         /*
          * If the form is complete or started and there is more than one question, 
@@ -272,6 +259,13 @@ export class ModelForm extends React.PureComponent<Props,State> {
             dispatch(userUpdateServerData());
         }
         
-        this.setState({ questionIndex: this.getFollowingRelevantQuestion() });
+        this.setState({ questionIndex: this.getFollowingRelevantQuestion(cpy) });
+    }
+
+    private handleAnswerTextChange = (o: ModelQuestionOption, value: any) => {
+        const { dispatch, answers } = this.props;
+        this.enableTransition = false;
+        const cpy = Object.assign({}, answers, { [o.answerField!]: value }) as UserAnswers;
+        dispatch(userSetAnswers(cpy));
     }
 }

@@ -4,6 +4,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import './ModelTransitionForm.css';
 
 interface Props {
+    enableTransition?: boolean;
     header: string | JSX.Element;
     headerLarge?: boolean;
     subheader?: string | JSX.Element;
@@ -11,7 +12,6 @@ interface Props {
     cornerInfo?: string | JSX.Element;
     onGoBackClick?: () => any;
     onNextClick?: () => any;
-    preventTransition?: boolean;
 }
 
 enum TransitionState {
@@ -55,7 +55,7 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
         /*
          * If a new content update, slide the old to the left.
          */
-        if (this.props.content !== prevProps.content && !this.props.preventTransition) {
+        if (this.props.content !== prevProps.content && this.props.enableTransition) {
             const movement = this.goBackClicked ? TransitionState.MoveRight : TransitionState.MoveLeft;
             this.setState({ outgoing: prevProps, transition: movement });
 
@@ -101,8 +101,8 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
                         <BaseForm {...outgoing} />
                     </div>
                     {outgoing.cornerInfo && <div className={`${c}-corner-info`}>{outgoing.cornerInfo}</div>}
-                    {outgoing.onGoBackClick && <button className={'maturity-model-button secondary'}><FiChevronLeft />Go Back</button> }
-                    {outgoing.onNextClick && <button className={'maturity-model-button next'}>Next<FiChevronRight /></button> }
+                    {outgoing.onGoBackClick && <button className={'maturity-model-button secondary prev'}><FiChevronLeft />Go Back</button> }
+                    {outgoing.onNextClick && <button className={'maturity-model-button secondary next'}>Next<FiChevronRight /></button> }
                 </div>
             );
         }
@@ -116,8 +116,8 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
                     <BaseForm {...this.props} />
                 </div>
                 {cornerInfo && <div className={`${c}-corner-info`}>{cornerInfo}</div>}
-                {onGoBackClick && <button className={'maturity-model-button secondary'} onClick={this.handleGoBackClick}><FiChevronLeft />Go Back</button> }
-                {onNextClick && <button className={'maturity-model-button next'} onClick={this.handleNextClick}>Next<FiChevronRight /></button> }
+                {onGoBackClick && <button className={'maturity-model-button secondary prev'} onClick={this.handleGoBackClick}><FiChevronLeft />Go Back</button> }
+                {onNextClick && <button className={'maturity-model-button secondary next'} onClick={this.handleNextClick}>Next<FiChevronRight /></button> }
             </div>
         );
     }
