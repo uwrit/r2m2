@@ -23,6 +23,7 @@ interface State {
 export class ModelForm extends React.PureComponent<Props,State> {
     private className = 'model-form';
     private startingState = 0;
+    private preventTransition = false;
 
     public constructor(props: Props) {
         super(props);
@@ -127,7 +128,33 @@ export class ModelForm extends React.PureComponent<Props,State> {
     }
 
     private handleGoBackClick = () => {
-        this.setState({ questionIndex: this.state.questionIndex - 1 })
+        const { answers, model } = this.props;
+        const { questionIndex } = this.state;
+
+        /*
+         * Move to previous relevant question.
+         */
+        let i = questionIndex-1;
+        while (i > 0) {
+            const prev = model.questions[i];
+            /* 
+             * If has a shouldRender() function, run and set as question if true.
+             */
+            if (prev.shouldRender) {
+                if (prev.shouldRender(answers)) {
+                    this.setState({ questionIndex: i });
+                    return;
+                }
+                i--;
+                continue;
+            }
+            /*
+             * Else move to this question.
+             */
+            this.setState({ questionIndex: i });
+            return;
+        }
+        this.setState({ questionIndex: 0 })
     }
 
     private handleReturnHomeClick = () => {
@@ -225,27 +252,26 @@ export class ModelForm extends React.PureComponent<Props,State> {
          * Move to next relevant question.
          */
         let i = questionIndex+1;
-        // while (i < total) {
-        //     const next = model.questions[i];
-        //     /* 
-        //      * If has a shouldRender() function, run and set as question if true.
-        //      */
-        //     if (next.shouldRender) {
-        //         console.log('error here')
-        //         if (next.shouldRender(answers)) {
-        //             console.log('setting state')
-        //             this.setState({ questionIndex: i });
-        //             return;
-        //         }
-        //     /*
-        //      * Else move to next question.
-        //      */
-        //     } else {
-        //         this.setState({ questionIndex: i });
-        //         return;
-        //     }
-        // }
-        // this.setState({ questionIndex: total });
+        while (i < total) {
+            const next = model.questions[i];
+            /* 
+             * If has a shouldRender() function, run and set as question if true.
+             */
+            if (next.shouldRender) {
+                if (next.shouldRender(answers)) {
+                    this.setState({ questionIndex: i });
+                    return;
+                }
+                i++;
+                continue;
+            }
+            /*
+             * Else move to next question.
+             */
+            this.setState({ questionIndex: i });
+            return;
+        }
+        this.setState({ questionIndex: total });
         this.setState({ questionIndex: i })
     }
 }
