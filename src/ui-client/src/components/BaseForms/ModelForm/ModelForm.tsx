@@ -209,7 +209,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         }
         return undefined;
     }
-
+    
     private getAnswerClickHandler = (q: ModelQuestion, o: ModelQuestionOption) => {
         if (o.freeText) {
             return this.noOpClickHandler;

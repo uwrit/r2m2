@@ -96,37 +96,42 @@ export const EHR: BaseModel =
             type: QuestionType.MultipleAnswer,
             options: [
                 {
-                    answerField: 'ehr_q4_1',
+                    answerField: 'ehr_q4___1',
                     text: "Security/Access for Research Users",
                     value: '1'
                 },
                 {
-                    answerField: 'ehr_q4_2',
+                    answerField: 'ehr_q4___2',
                     text: "Research Billing/Compliance functions",
                     value: '2'
                 },
                 {
-                    answerField: 'ehr_q4_3',
+                    answerField: 'ehr_q4___3',
                     text: "Research Reporting",
                     value: '3'
                 },
                 {
+                    answerField: 'ehr_q4___4',
                     text: "Clinical Research Tools",
                     value: '4'
                 },
                 {
+                    answerField: 'ehr_q4___5',
                     text: "Research Specific Care Management",
                     value: '5'
                 },
                 {
+                    answerField: 'ehr_q4___6',
                     text: "Research Interfaces & Integrations",
                     value: '6'
                 },
                 {
+                    answerField: 'ehr_q4___7',
                     text: "Research Oncology Tools",
                     value: '7'
                 },
                 {
+                    answerField: 'ehr_q4___8',
                     text: "Investigational Drug Services/Pharmacy",
                     value: '8'
                 }
@@ -140,18 +145,22 @@ export const EHR: BaseModel =
             type: QuestionType.MultipleAnswer,
             options: [
                 {
+                    answerField: 'ehr_q4_1___1',
                     text: "Research specific user access templates / subtemplates",
                     value: '1'
                 },
                 {
+                    answerField: 'ehr_q4_1___2',
                     text: "Research specific security classes",
                     value: '2'
                 },
                 {
+                    answerField: 'ehr_q4_1___3',
                     text: "Virtual Access for external research users not affiliated with your institution Virtual Access for external research monitor",
                     value: '3'
                 },
                 {
+                    answerField: 'ehr_q4_1___4',
                     text: "Audits of research user activity within the EHR",
                     value: '4'
                 }
@@ -164,48 +173,64 @@ export const EHR: BaseModel =
             type: QuestionType.MultipleAnswer,
             options: [
                 {
+                    answerField: 'ehr_q4_2___1',
                     text: <span>Research-only <strong>orderables</strong> builds &amp; updates</span>,
                     value: '1'
                 },
                 {
+                    answerField: 'ehr_q4_2___2',
                     text: <span>Research <strong>component record</strong> builds &amp; updates</span>,
                     value: '2'
                 },
                 {
+                    answerField: 'ehr_q4_2___3',
                     text: <span>Research <strong>rule configuration</strong> (excluding charge routing)</span>,
                     value: '3'
                 },
                 {
+                    answerField: 'ehr_q4_2___4',
                     text: <span>Research <strong>billing functionality</strong> builds &amp; updates</span>,
                     value: '4'
                 },
                 {
-                    text: <span>Research <strong>work queue build, configuration &amp; updates</strong></span>,
+                    answerField: 'ehr_q4_2___5',
+                    text: <span>Research <strong>billing work queue build, configuration &amp; updates</strong></span>,
                     value: '5'
                 },
                 {
-                    text: <span>Non-interfaced research billing grid builds and updates</span>,
+                    answerField: 'ehr_q4_2___6',
+                    text: <span>Order/Smartset or Order group builds &amp; updates</span>,
                     value: '6'
                 },
                 {
-                    text: <span>Changes made to the Research record not a part of the Clinical Trials Management System or Clinical Trials offices responsibilities</span>,
+                    answerField: 'ehr_q4_2___7',
+                    text: <span>Non-interfaced research billing grid builds and updates</span>,
                     value: '7'
                 },
                 {
-                    text: <span>Research Task Builds</span>,
+                    answerField: 'ehr_q4_2___8',
+                    text: <span>Changes made to the Research record not a part of the Clinical Trials Management System or Clinical Trials offices responsibilities</span>,
                     value: '8'
                 },
                 {
-                    text: <span>Research Event notifications</span>,
+                    answerField: 'ehr_q4_2___9',
+                    text: <span>Research Task Builds</span>,
                     value: '9'
                 },
                 {
-                    text: <span>Consent and Amendment functionality build, configuration &amp; updates</span>,
+                    answerField: 'ehr_q4_2___10',
+                    text: <span>Research Event notifications</span>,
                     value: '10'
                 },
                 {
-                    text: <span>Facilitation of de-identified research participant workflows &amp; functionality</span>,
+                    answerField: 'ehr_q4_2___11',
+                    text: <span>Consent and Amendment functionality build, configuration &amp; updates</span>,
                     value: '11'
+                },
+                {
+                    answerField: 'ehr_q4_2___12',
+                    text: <span>Facilitation of de-identified research participant workflows &amp; functionality</span>,
+                    value: '12'
                 }
             ]
         },
@@ -216,22 +241,27 @@ export const EHR: BaseModel =
             type: QuestionType.MultipleAnswer,
             options: [
                 {
+                    answerField: 'ehr_q4_3___1',
                     text: <span>Creation, maintenance &amp; provisioning of reports within the EHR for study teams to utilize for research purposes (i.e. recruitment)</span>,
                     value: '1'
                 },
                 {
+                    answerField: 'ehr_q4_3___2',
                     text: <span> Creation, validation, maintenance &amp; distribution of reports of data pulled from the EHR specific database for research data requests and facilitated through honest broker services</span>,
                     value: '2'
                 },
                 {
+                    answerField: 'ehr_q4_3___3',
                     text: <span>(Epic Specific Institutions) Provide honest broker services for research study teams wishing to convert and export de-identified SlicerDicer queries</span>,
                     value: '3'
                 },
                 {
+                    answerField: 'ehr_q4_3___4',
                     text: <span>Audits of users &amp; reports being run within the EHR</span>,
                     value: '4'
                 },
                 {
+                    answerField: 'ehr_q4_3___5',
                     text: <span>Accounting of Disclosures documentation for research reports done in or through the EHR</span>,
                     value: '5'
                 }
@@ -363,34 +393,42 @@ export const EHR: BaseModel =
             type: QuestionType.MultipleAnswer,
             options: [
                 {
+                    answerField: 'ehr_q10___1',
                     text: "Anesthesia",
                     value: '1'
                 },
                 {
+                    answerField: 'ehr_q10___2',
                     text: "ASAP",
                     value: '2'
                 },
                 {
+                    answerField: 'ehr_q10___3',
                     text: "Beacon",
                     value: '3'
                 },
                 {
+                    answerField: 'ehr_q10___4',
                     text: "Beaker",
                     value: '4'
                 },
                 {
+                    answerField: 'ehr_q10___5',
                     text: "BedTime",
                     value: '5'
                 },
                 {
+                    answerField: 'ehr_q10___6',
                     text: "Benefits Engine",
                     value: '6'
                 },
                 {
+                    answerField: 'ehr_q10___7',
                     text: "Bones",
                     value: '7'
                 },
                 {
+                    answerField: 'ehr_q10___8',
                     text: "Bridges",
                     value: '8'
                 },
@@ -603,6 +641,107 @@ export const EHR: BaseModel =
                     value: '60'
                 }
             ]
+        },
+        {
+            answerField: 'ehr_q10_1',
+            text: <span>Epic certifications - Anesthesia (Select all that apply):</span>,
+            type: QuestionType.MultipleAnswer,
+            options: [
+                {
+                    answerField: 'ehr_q10_1___1',
+                    text: 'Anesthesia Certification/Proficiency',
+                    value: '1'
+                },
+                {
+                    answerField: 'ehr_q10_1___2',
+                    text: 'Anesthesia for the Clinically Trained Certification/Proficiency',
+                    value: '2'
+                },
+                {
+                    answerField: 'ehr_q10_1___3',
+                    text: 'Anesthesia for the Curriculum-Trained Certification/Proficiency',
+                    value: '3'
+                },
+                {
+                    answerField: 'ehr_q10_1___4',
+                    text: 'Physician Builder Anesthesia Certification/Proficiency',
+                    value: '4'
+                },
+                {
+                    answerField: 'ehr_q10_1___5',
+                    text: 'OpTime and Anesthesia Curriculum Certification/Proficiency',
+                    value: '5'
+                },
+                {
+                    answerField: 'ehr_q10_1___6',
+                    text: 'OpTime and Anesthesia Curriculum Certification/Proficiency for the Application Certified',
+                    value: '6'
+                },
+                {
+                    answerField: 'ehr_q10_1___7',
+                    text: 'Surgical Training Environment Build Certification/Proficiency',
+                    value: '7'
+                },
+            ]  
+        },
+        {
+            answerField: 'ehr_q10_2',
+            text: <span>Epic certifications - ASAP (Select all that apply):</span>,
+            type: QuestionType.MultipleAnswer,
+            options: [
+                {
+                    answerField: 'ehr_q10_2___1',
+                    text: 'ASAP Emergency Department Certification/Proficiency',
+                    value: '1'
+                },
+                {
+                    answerField: 'ehr_q10_2___2',
+                    text: 'ASAP Emergency Department for the Clinically Trained Certification/Proficiency',
+                    value: '2'
+                },
+                {
+                    answerField: 'ehr_q10_2___3',
+                    text: 'ASAP Curriculum Certification/Proficiency',
+                    value: '3'
+                },
+                {
+                    answerField: 'ehr_q10_2___4',
+                    text: 'ASAP Curriculum Certification/Proficiency for Application Certified',
+                    value: '4'
+                },
+                {
+                    answerField: 'ehr_q10_2___5',
+                    text: 'ASAP Training Environment Build Certification/Proficiency',
+                    value: '5'
+                }
+            ]  
+        },
+        {
+            answerField: 'ehr_q10_3',
+            text: <span>Epic certifications - Beacon (Select all that apply):</span>,
+            type: QuestionType.MultipleAnswer,
+            options: [
+                {
+                    answerField: 'ehr_q10_3___1',
+                    text: 'Beacon Certification/Proficiency',
+                    value: '1'
+                },
+                {
+                    answerField: 'ehr_q10_3___2',
+                    text: 'Beacon Curriculum Certification/Proficiency',
+                    value: '2'
+                },
+                {
+                    answerField: 'ehr_q10_3___3',
+                    text: 'Beacon Curriculum Certification/Proficiency for Application Certified',
+                    value: '3'
+                },
+                {
+                    answerField: 'ehr_q10_3___4',
+                    text: 'Ancillary Clinicals Training Environment Build Certification/Proficiency',
+                    value: '4'
+                }
+            ]  
         }
     ]
 }

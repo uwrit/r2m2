@@ -10,8 +10,8 @@ import { LoginState, LoginServerCommunicationState } from "../model/LoginState"
 
 export const defaultLoginState = (): LoginState => {
     return {
-        emailAddress: '',
-        entryCode: '',
+        emailAddress: 'mh2727@uw.edu',
+        entryCode: 'mtest',
         loggedIn: false,
         serverCommunication: LoginServerCommunicationState.Idle
     }
