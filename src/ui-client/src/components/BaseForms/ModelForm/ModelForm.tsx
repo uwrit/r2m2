@@ -65,7 +65,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
                                 <FiChevronLeft />   
                                 Go Back
                             </button>
-                            <button className={`maturity-model-button next`} onClick={this.handleNextClick}>
+                            <button className={`maturity-model-button secondarynext`} onClick={this.handleNextClick}>
                                 Next
                                 <FiChevronRight />
                             </button>
@@ -236,12 +236,10 @@ export class ModelForm extends React.PureComponent<Props,State> {
             }) as UserAnswers;
             dispatch(userSetAnswers(cpy));
             this.handleSingleAnswerClick(isFirst, isLast, total);
+            return;
         }
 
-        if (question.type === QuestionType.MultipleAnswer) {
-            // const cpy = Object.assign
-            this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
-        }
+        this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
     }
 
     private handleMultipleAnswerClick = (value: any, isLast: boolean, alreadyCompleted: boolean) => {
