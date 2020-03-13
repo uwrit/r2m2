@@ -11,6 +11,7 @@ interface Props {
     cornerInfo?: string | JSX.Element;
     onGoBackClick?: () => any;
     onNextClick?: () => any;
+    preventTransition?: boolean;
 }
 
 enum TransitionState {
@@ -54,7 +55,7 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
         /*
          * If a new content update, slide the old to the left.
          */
-        if (this.props.content !== prevProps.content) {
+        if (this.props.content !== prevProps.content && !this.props.preventTransition) {
             const movement = this.goBackClicked ? TransitionState.MoveRight : TransitionState.MoveLeft;
             this.setState({ outgoing: prevProps, transition: movement });
 
