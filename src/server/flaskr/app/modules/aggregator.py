@@ -10,29 +10,29 @@ ehr_questions = 'ehr_questions'
 
 #EHR Questions
 ehr_q1   = 'ehr_q1'
-ehr_q2   = 'ehr_q2'
-ehr_q3   = 'ehr_q3'
-ehr_q4   = 'ehr_q4'
-ehr_q5   = 'ehr_q5'
-ehr_q6a  = 'ehr_q6a'
-ehr_q6b  = 'ehr_q6b'
-ehr_q7   = 'ehr_q7'
-ehr_q8   = 'ehr_q8'
-ehr_q9   = 'ehr_q9'
-ehr_q10  = 'ehr_q10'
+# ehr_q2   = 'ehr_q2'
+# ehr_q3   = 'ehr_q3'
+# ehr_q4   = 'ehr_q4'
+# ehr_q5   = 'ehr_q5'
+# ehr_q6a  = 'ehr_q6a'
+# ehr_q6b  = 'ehr_q6b'
+# ehr_q7   = 'ehr_q7'
+# ehr_q8   = 'ehr_q8'
+# ehr_q9   = 'ehr_q9'
+# ehr_q10  = 'ehr_q10'
 
 # Stats
-q1Stats  = 'q1Stats'
-q2Stats  = 'q2Stats'
-q3Stats  = 'q3Stats'
-q4Stats  = 'q4Stats'
-q5Stats  = 'q5Stats'
-q6AStats = 'q6AStats'
-q6BStats = 'q6BStats'
-q7Stats  = 'q7Stats'
-q8Stats  = 'q8Stats'
-q9Stats  = 'q9Stats'
-q10Stats = 'q10Stats'
+# q1Stats  = 'q1Stats'
+# q2Stats  = 'q2Stats'
+# q3Stats  = 'q3Stats'
+# q4Stats  = 'q4Stats'
+# q5Stats  = 'q5Stats'
+# q6AStats = 'q6AStats'
+# q6BStats = 'q6BStats'
+# q7Stats  = 'q7Stats'
+# q8Stats  = 'q8Stats'
+# q9Stats  = 'q9Stats'
+# q10Stats = 'q10Stats'
 
 def get_user_score(user):
 
@@ -45,16 +45,16 @@ def get_user_score(user):
 
     score[ehr_questions] = {}
     score[ehr_questions][ehr_q1]  = float(user[EHR_Q1]) / max_five if user[EHR_Q1].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q2]  = float(user[EHR_Q2]) / max_five if user[EHR_Q2].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q3]  = float(user[EHR_Q3]) / max_five if user[EHR_Q3].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q4]  = float(user[EHR_Q4]) / max_five if user[EHR_Q4].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q5]  = float(user[EHR_Q5]) / max_five if user[EHR_Q5].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q6a] = float(user[EHR_Q6A]) / max_five if user[EHR_Q6A].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q6b] = float(user[EHR_Q6B]) / max_five if user[EHR_Q6B].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q7]  = float(user[EHR_Q7]) / max_five if user[EHR_Q7].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q8]  = float(user[EHR_Q8]) / max_five if user[EHR_Q8].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q9]  = float(user[EHR_Q9]) / max_five if user[EHR_Q9].isdigit() else None if user[EHR_COMPLETE] == '2' else None
-    score[ehr_questions][ehr_q10] = float(user[EHR_Q10]) / max_five if user[EHR_Q10].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q2]  = float(user[EHR_Q2]) / max_five if user[EHR_Q2].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q3]  = float(user[EHR_Q3]) / max_five if user[EHR_Q3].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q4]  = float(user[EHR_Q4]) / max_five if user[EHR_Q4].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q5]  = float(user[EHR_Q5]) / max_five if user[EHR_Q5].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q6a] = float(user[EHR_Q6A]) / max_five if user[EHR_Q6A].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q6b] = float(user[EHR_Q6B]) / max_five if user[EHR_Q6B].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q7]  = float(user[EHR_Q7]) / max_five if user[EHR_Q7].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q8]  = float(user[EHR_Q8]) / max_five if user[EHR_Q8].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q9]  = float(user[EHR_Q9]) / max_five if user[EHR_Q9].isdigit() else None if user[EHR_COMPLETE] == '2' else None
+    # score[ehr_questions][ehr_q10] = float(user[EHR_Q10]) / max_five if user[EHR_Q10].isdigit() else None if user[EHR_COMPLETE] == '2' else None
 
     return score
 
@@ -68,16 +68,16 @@ def aggregate(all):
 
     agg_score[ehr_questions] = {}
     agg_score[ehr_questions][q1Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q1)
-    agg_score[ehr_questions][q2Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q2)
-    agg_score[ehr_questions][q3Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q3)
-    agg_score[ehr_questions][q4Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q4)
-    agg_score[ehr_questions][q5Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q5)
-    agg_score[ehr_questions][q6AStats]  = __get_aggregate_stats(ehr_question_scores, ehr_q6a)
-    agg_score[ehr_questions][q6BStats]  = __get_aggregate_stats(ehr_question_scores, ehr_q6b)
-    agg_score[ehr_questions][q7Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q7)
-    agg_score[ehr_questions][q8Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q8)
-    agg_score[ehr_questions][q9Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q9)
-    agg_score[ehr_questions][q10Stats]  = __get_aggregate_stats(ehr_question_scores, ehr_q10)
+    # agg_score[ehr_questions][q2Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q2)
+    # agg_score[ehr_questions][q3Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q3)
+    # agg_score[ehr_questions][q4Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q4)
+    # agg_score[ehr_questions][q5Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q5)
+    # agg_score[ehr_questions][q6AStats]  = __get_aggregate_stats(ehr_question_scores, ehr_q6a)
+    # agg_score[ehr_questions][q6BStats]  = __get_aggregate_stats(ehr_question_scores, ehr_q6b)
+    # agg_score[ehr_questions][q7Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q7)
+    # agg_score[ehr_questions][q8Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q8)
+    # agg_score[ehr_questions][q9Stats]   = __get_aggregate_stats(ehr_question_scores, ehr_q9)
+    # agg_score[ehr_questions][q10Stats]  = __get_aggregate_stats(ehr_question_scores, ehr_q10)
 
     return agg_score, len(all_scores)
 

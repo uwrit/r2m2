@@ -28,11 +28,12 @@ export default class ModelOption extends React.PureComponent<Props,State> {
         return (
             <div className={classes.join(' ')} onClick={this.handleClick}>
                 <div className={`${c}-value`}>{data.value}</div>
+                {/* <div className={`${c}-text`}>{data.text}</div> */}
                 {!data.freeText
-                // Need to figure out how to save free text
                     ? <div className={`${c}-text`}>{data.text}</div>
                     : <div className={`${c}-text`}>
-                        <input value={this.state.text} onChange={this.handleTextChange} placeholder={data.text.toString()}/>
+                        {data.text}
+                        <input className={`${c}-text-input`} value={this.state.text} onChange={this.handleTextChange}/>
                      </div>
                 }
             </div>
@@ -41,7 +42,13 @@ export default class ModelOption extends React.PureComponent<Props,State> {
 
     private handleClick = () => {
         const { data, onClick } = this.props;
-        onClick(data.value);
+        // onClick(data.value);
+        if (!data.freeText) {
+            onClick(data.value);            
+        } else {
+            const val = {text: this.state.text, freeText: true};
+            onClick(val);
+        }
     }
 
     private handleTextChange = (e: React.FormEvent<HTMLInputElement>) => {

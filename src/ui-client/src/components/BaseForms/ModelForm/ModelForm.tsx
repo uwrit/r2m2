@@ -61,7 +61,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
                                 <FiChevronRight />
                             </button>
                             <button className={`maturity-model-button secondary`} onClick={this.handleReturnHomeClick}>
-                                <FiChevronLeft />
+                                <FiChevronLeft />   
                                 Go Back
                             </button>
                         </div>
@@ -73,8 +73,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         /*
          * If in ending state OR question shouldRender is false, congratulate the user and allow them to move to next survey.
          */
-        const q = model.questions[questionIndex-1];
-        if (questionIndex > model.questions.length || !q.shouldRender) {
+        if (questionIndex > model.questions.length) {
             return (
                 <ModelTransitionForm 
                     header={`You've completed the ${model.name} survey!`}
@@ -84,6 +83,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
             );
         }
 
+        const q = model.questions[questionIndex-1];
         const currAnswer = answers[q.answerField];
         return (
             <ModelTransitionForm 
@@ -137,10 +137,23 @@ export class ModelForm extends React.PureComponent<Props,State> {
         const isLast = questionIndex === total;
         const alreadyCompleted = answers[model.completeField] === FormState.Complete;
 
+        const question = model.questions[questionIndex-1];
+        /*
+         * 
+         */
+        // if (value['freeText']) {
+        //     return;
+        //     // const cpy = Object.assign({}, answers, { 
+        //     //     [question.options[6].answerField]: value['text'],
+        //     //     [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
+        //     // }) as UserAnswers;
+        //     // dispatch(userSetAnswers(cpy));
+        // };
+
         /* 
          * Update store with the answer.
          */
-        const question = model.questions[questionIndex-1];
+        // const question = model.questions[questionIndex-1];
         const cpy = Object.assign({}, answers, { 
             [question.answerField]: value,
             [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
@@ -173,7 +186,6 @@ export class ModelForm extends React.PureComponent<Props,State> {
         let i = questionIndex+1;
         while (i < total) {
             const next = model.questions[i];
-
             /* 
              * If has a shouldRender() function, run and set as question if true.
              */

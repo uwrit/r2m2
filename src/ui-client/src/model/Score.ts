@@ -1,15 +1,15 @@
 export interface EHRQuestionScore {
-    q1Stats : AnswerStats;
-    q2Stats : AnswerStats;
-    q3Stats : AnswerStats;
-    q4Stats : AnswerStats;
-    q5Stats : AnswerStats;
-    q6AStats: AnswerStats;
-    q6BStats: AnswerStats;
-    q7Stats : AnswerStats;
-    q8Stats : AnswerStats;
-    q9Stats : AnswerStats;
-    q10Stats: AnswerStats;
+    // q1Stats : AnswerStats;
+    // q2Stats : AnswerStats;
+    // q3Stats : AnswerStats;
+    // q4Stats : AnswerStats;
+    // q5Stats : AnswerStats;
+    // q6AStats: AnswerStats;
+    // q6BStats: AnswerStats;
+    // q7Stats : AnswerStats;
+    // q8Stats : AnswerStats;
+    // q9Stats : AnswerStats;
+    // q10Stats: AnswerStats;
 }
 
 export interface BaseAnswerScore {
@@ -17,7 +17,7 @@ export interface BaseAnswerScore {
 }
 
 export interface AllAnswerScore extends BaseAnswerScore {
-    ehr_questions: EHRQuestionScore;
+    // ehr_questions: EHRQuestionScore;
 }
 
 export interface AnswerStats {
