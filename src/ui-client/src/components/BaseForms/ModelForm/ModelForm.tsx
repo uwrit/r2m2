@@ -73,7 +73,8 @@ export class ModelForm extends React.PureComponent<Props,State> {
         /*
          * If in ending state OR question shouldRender is false, congratulate the user and allow them to move to next survey.
          */
-        if (questionIndex > model.questions.length) {
+        const q = model.questions[questionIndex-1];
+        if (questionIndex > model.questions.length || !q.shouldRender) {
             return (
                 <ModelTransitionForm 
                     header={`You've completed the ${model.name} survey!`}
@@ -83,7 +84,6 @@ export class ModelForm extends React.PureComponent<Props,State> {
             );
         }
 
-        const q = model.questions[questionIndex-1];
         const currAnswer = answers[q.answerField];
         return (
             <ModelTransitionForm 
