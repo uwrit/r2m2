@@ -1,8 +1,12 @@
 import React from "react";
 import { BaseModel, QuestionType, ModelQuestionOption } from "../ModelsState";
-import { UserAnswers, ehr_q4_1, ehr_q4_2, ehr_q4_3 } from "../User";
+import { UserAnswers } from "../User";
 import { EHRForm } from "../../components/Models/EHR";
-
+import { 
+    ehr_q4_1_arr, ehr_q4_2_arr, ehr_q4_3_arr, ehr_q4_4_arr, ehr_q4_5_arr,
+    ehr_q4_6_arr, ehr_q4_7_arr, ehr_q4_8_arr, ehr_q4_arr
+    } from "./EHRQ4Options";
+    
 export const EHR: BaseModel =
 {
     completeField: 'ehr_complete',
@@ -97,43 +101,35 @@ export const EHR: BaseModel =
             options: [
                 {
                     answerField: 'ehr_q4___1',
-                    text: "Security/Access for Research Users",
-                    value: '1'
+                    text: "Security/Access for Research Users"
                 },
                 {
                     answerField: 'ehr_q4___2',
-                    text: "Research Billing/Compliance functions",
-                    value: '2'
+                    text: "Research Billing/Compliance functions"
                 },
                 {
                     answerField: 'ehr_q4___3',
-                    text: "Research Reporting",
-                    value: '3'
+                    text: "Research Reporting"
                 },
                 {
                     answerField: 'ehr_q4___4',
-                    text: "Clinical Research Tools",
-                    value: '4'
+                    text: "Clinical Research Tools"
                 },
                 {
                     answerField: 'ehr_q4___5',
-                    text: "Research Specific Care Management",
-                    value: '5'
+                    text: "Research Specific Care Management"
                 },
                 {
                     answerField: 'ehr_q4___6',
-                    text: "Research Interfaces & Integrations",
-                    value: '6'
+                    text: "Research Interfaces & Integrations"
                 },
                 {
                     answerField: 'ehr_q4___7',
-                    text: "Research Oncology Tools",
-                    value: '7'
+                    text: "Research Oncology Tools"
                 },
                 {
                     answerField: 'ehr_q4___8',
-                    text: "Investigational Drug Services/Pharmacy",
-                    value: '8'
+                    text: "Investigational Drug Services/Pharmacy"
                 }
 
             ]
@@ -143,129 +139,21 @@ export const EHR: BaseModel =
             shouldRender: (answers: UserAnswers) => answers['ehr_q4___1'] === '1',
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Security/Access</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
-            options: [
-                {
-                    answerField: 'ehr_q4_1___1',
-                    text: "Research specific user access templates / subtemplates",
-                    value: '1'
-                },
-                {
-                    answerField: 'ehr_q4_1___2',
-                    text: "Research specific security classes",
-                    value: '2'
-                },
-                {
-                    answerField: 'ehr_q4_1___3',
-                    text: "Virtual Access for external research users not affiliated with your institution Virtual Access for external research monitor",
-                    value: '3'
-                },
-                {
-                    answerField: 'ehr_q4_1___4',
-                    text: "Audits of research user activity within the EHR",
-                    value: '4'
-                }
-            ]
+            options: ehr_q4_1_arr
         },
         {
             answerField: 'ehr_q4_2',
             shouldRender: (answers: UserAnswers) => answers['ehr_q4___2'] === '1',
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Billing/Compliance functions</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
-            options: [
-                {
-                    answerField: 'ehr_q4_2___1',
-                    text: <span>Research-only <strong>orderables</strong> builds &amp; updates</span>,
-                    value: '1'
-                },
-                {
-                    answerField: 'ehr_q4_2___2',
-                    text: <span>Research <strong>component record</strong> builds &amp; updates</span>,
-                    value: '2'
-                },
-                {
-                    answerField: 'ehr_q4_2___3',
-                    text: <span>Research <strong>rule configuration</strong> (excluding charge routing)</span>,
-                    value: '3'
-                },
-                {
-                    answerField: 'ehr_q4_2___4',
-                    text: <span>Research <strong>billing functionality</strong> builds &amp; updates</span>,
-                    value: '4'
-                },
-                {
-                    answerField: 'ehr_q4_2___5',
-                    text: <span>Research <strong>billing work queue build, configuration &amp; updates</strong></span>,
-                    value: '5'
-                },
-                {
-                    answerField: 'ehr_q4_2___6',
-                    text: <span>Order/Smartset or Order group builds &amp; updates</span>,
-                    value: '6'
-                },
-                {
-                    answerField: 'ehr_q4_2___7',
-                    text: <span>Non-interfaced research billing grid builds and updates</span>,
-                    value: '7'
-                },
-                {
-                    answerField: 'ehr_q4_2___8',
-                    text: <span>Changes made to the Research record not a part of the Clinical Trials Management System or Clinical Trials offices responsibilities</span>,
-                    value: '8'
-                },
-                {
-                    answerField: 'ehr_q4_2___9',
-                    text: <span>Research Task Builds</span>,
-                    value: '9'
-                },
-                {
-                    answerField: 'ehr_q4_2___10',
-                    text: <span>Research Event notifications</span>,
-                    value: '10'
-                },
-                {
-                    answerField: 'ehr_q4_2___11',
-                    text: <span>Consent and Amendment functionality build, configuration &amp; updates</span>,
-                    value: '11'
-                },
-                {
-                    answerField: 'ehr_q4_2___12',
-                    text: <span>Facilitation of de-identified research participant workflows &amp; functionality</span>,
-                    value: '12'
-                }
-            ]
+            options: ehr_q4_2_arr
         },
         {
             answerField: 'ehr_q4_3',
             shouldRender: (answers: UserAnswers) => answers['ehr_q4___3'] === '1',
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Reporting</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
-            options: [
-                {
-                    answerField: 'ehr_q4_3___1',
-                    text: <span>Creation, maintenance &amp; provisioning of reports within the EHR for study teams to utilize for research purposes (i.e. recruitment)</span>,
-                    value: '1'
-                },
-                {
-                    answerField: 'ehr_q4_3___2',
-                    text: <span> Creation, validation, maintenance &amp; distribution of reports of data pulled from the EHR specific database for research data requests and facilitated through honest broker services</span>,
-                    value: '2'
-                },
-                {
-                    answerField: 'ehr_q4_3___3',
-                    text: <span>(Epic Specific Institutions) Provide honest broker services for research study teams wishing to convert and export de-identified SlicerDicer queries</span>,
-                    value: '3'
-                },
-                {
-                    answerField: 'ehr_q4_3___4',
-                    text: <span>Audits of users &amp; reports being run within the EHR</span>,
-                    value: '4'
-                },
-                {
-                    answerField: 'ehr_q4_3___5',
-                    text: <span>Accounting of Disclosures documentation for research reports done in or through the EHR</span>,
-                    value: '5'
-                }
-            ]
+            options: ehr_q4_3_arr
         },
         {
             answerField: 'ehr_q5',
@@ -365,16 +253,12 @@ export const EHR: BaseModel =
             answerField: 'ehr_q8',
             getOptions: (answers: UserAnswers) => {
                 const opts: ModelQuestionOption[] = [];
-                // const ehr_q4_1 = ;
-                if (answers[ehr_q4_1] === '1') {
-                    opts.push({ text: ehr_q4_1.text, answerField: 'ehr_q8_1', value: '1' });
-                };
-                if (answers[ehr_q4_2] === '1') {
-                    opts.push({ text: , answerField: 'ehr_q8_2', value: '2' });
-                };
-                if (answers[ehr_q4_3] === '1') {
-                    opts.push({ text: , answerField: 'ehr_q8_3', value: '3' });
-                };
+                for(let i=0; i<ehr_q4_arr.length; i++){
+                    const a = ehr_q4_arr[i];
+                    if (answers[a.answerField!] === '1'){
+                        opts.push({ ...a, answerField: 'ehr_q8_' + a.answerField } as any);
+                    }
+                }
                 return opts;
             },
             text: "Please indicate which areas of research activity in the EHR are supported by Embedded Research EHR IT Staff (Select all that apply):",
@@ -385,16 +269,12 @@ export const EHR: BaseModel =
             answerField: 'ehr_q9',
             getOptions: (answers: UserAnswers) => {
                 const opts: ModelQuestionOption[] = [];
-
-                if (answers[ehr_q4_1] === '1') {
-                    opts.push({ text: , answerField: 'ehr_q9_1', value: '1' });
-                };
-                if (answers[ehr_q4_2] === '1') {
-                    opts.push({ text: '', answerField: 'ehr_q9_2', value: '2' });
-                };
-                if (answers[ehr_q4_3] === '1') {
-                    opts.push({ text: , answerField: 'ehr_q9_3', value: '3' });
-                };
+                for(let i=0; i<ehr_q4_arr.length; i++){
+                    const a = ehr_q4_arr[i];
+                    if (answers[a.answerField!] === '1'){
+                        opts.push({ ...a, answerField: 'ehr_q9_' + a.answerField } as any);
+                    }
+                }
                 return opts;
             },
             text: "Please indicate which areas of research activity in the EHR are supported by Dedicated Research EHR IT Staff (Select all that apply):",
