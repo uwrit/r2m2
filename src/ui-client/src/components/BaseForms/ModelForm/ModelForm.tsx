@@ -223,27 +223,26 @@ export class ModelForm extends React.PureComponent<Props,State> {
          * Move to next relevant question.
          */
         let i = questionIndex+1;
-        // while (i < total) {
-        //     const next = model.questions[i];
-        //     /* 
-        //      * If has a shouldRender() function, run and set as question if true.
-        //      */
-        //     if (next.shouldRender) {
-        //         console.log('error here')
-        //         if (next.shouldRender(answers)) {
-        //             console.log('setting state')
-        //             this.setState({ questionIndex: i });
-        //             return;
-        //         }
-        //     /*
-        //      * Else move to next question.
-        //      */
-        //     } else {
-        //         this.setState({ questionIndex: i });
-        //         return;
-        //     }
-        // }
-        // this.setState({ questionIndex: total });
-        this.setState({ questionIndex: i })
+        while (i < total) {
+            const next = model.questions[i];
+            /* 
+             * If has a shouldRender() function, run and set as question if true.
+             */
+            if (next.shouldRender) {
+                console.log('error here')
+                if (next.shouldRender(answers)) {
+                    console.log('setting state')
+                    this.setState({ questionIndex: i });
+                    return;
+                }
+            /*
+             * Else move to next question.
+             */
+            } else {
+                this.setState({ questionIndex: i });
+                return;
+            }
+        }
+        this.setState({ questionIndex: total });
     }
 }
