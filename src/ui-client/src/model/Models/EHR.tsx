@@ -4,7 +4,7 @@ import { UserAnswers } from "../User";
 import { EHRForm } from "../../components/Models/EHR";
 import { 
     ehr_q4_1_arr, ehr_q4_2_arr, ehr_q4_3_arr, ehr_q4_4_arr, ehr_q4_5_arr,
-    ehr_q4_6_arr, ehr_q4_7_arr, ehr_q4_8_arr, ehr_q4_arr
+    ehr_q4_5_1_arr, ehr_q4_6_arr, ehr_q4_7_arr, ehr_q4_8_arr, ehr_q4_arr
     } from "./EHRQ4Options";
     
 export const EHR: BaseModel =
@@ -156,6 +156,48 @@ export const EHR: BaseModel =
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Reporting</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_3_arr
+        },
+        {
+            answerField: 'ehr_q4_4',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___4'] === '1',
+            text: <span>What research activities are performed in your institution’s EHR <strong>regarding Clinical Research Tools</strong>? (Select all that apply)</span>,
+            type: QuestionType.MultipleAnswer,
+            options: ehr_q4_4_arr
+        },
+        {
+            answerField: 'ehr_q4_5',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___5'] === '1',
+            text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Specific Care Management</strong>? (Select all that apply)</span>,
+            type: QuestionType.MultipleAnswer,
+            options: ehr_q4_5_arr
+        },
+        {
+            answerField: 'ehr_q4_5_1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4_5___3'] === '1',
+            text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Specific Care Management - Patient Portal</strong>? (Select all that apply)</span>,
+            type: QuestionType.MultipleAnswer,
+            options: ehr_q4_5_1_arr
+        },
+        {
+            answerField: 'ehr_q4_6',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___6'] === '1',
+            text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Interfaces &amp; Integrations</strong>? (Select all that apply)</span>,
+            type: QuestionType.MultipleAnswer,
+            options: ehr_q4_6_arr
+        },
+        {
+            answerField: 'ehr_q4_7',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___7'] === '1',
+            text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Oncology Tools</strong>? (Select all that apply)</span>,
+            type: QuestionType.MultipleAnswer,
+            options: ehr_q4_7_arr
+        },
+        {
+            answerField: 'ehr_q4_8',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___8'] === '1',
+            text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Investigational Drug Services/Pharmacy</strong>? (Select all that apply)</span>,
+            type: QuestionType.MultipleAnswer,
+            options: ehr_q4_8_arr
         },
         {
             answerField: 'ehr_q5',
