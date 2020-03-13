@@ -97,13 +97,14 @@ export class ModelForm extends React.PureComponent<Props,State> {
                 content={this.getOptions(q, answers).map((o,i) => (
                     <ModelOption 
                         key={i} data={o}
-                        onClick={this.handleAnswerClick} 
+                        // onClick={this.handleAnswerClick} 
+                        onClick={this.getAnswerClickHandler(q)}
                         selected={this.setIsSelected(q, o, answers, currAnswer)} 
                     />)
                 )}
                 cornerInfo={cornerInfo}
                 onGoBackClick={this.handleGoBackClick}
-                onNextClick={this.handleNextClick}
+                onNextClick={q.type === QuestionType.MultipleAnswer ? this.handleNextClick : undefined}
             />
         );
     }
@@ -196,7 +197,22 @@ export class ModelForm extends React.PureComponent<Props,State> {
         this.setState({ questionIndex: this.getFollowingRelevantQuestion() });
     }
 
-    private handleAnswerClick = (value: any) => {
+
+    private getAnswerClickHandler = (q: ModelQuestion) => {
+        const { dispatch, answers, model } = this.props;
+        const { questionIndex } = this.state;
+        const total = model.questions.length;
+        const isFirst = questionIndex === 1;
+        const isLast = questionIndex === total;
+        const alreadyCompleted = answers[model.completeField] === FormState.Complete;
+
+        const question = model.questions[questionIndex-1];
+        if (q.type === QuestionType.MultipleAnswer) {
+            return this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
+        }
+    }
+
+    private handleAnswerClick = (value: ModelQuestionOption) => {
         const { dispatch, answers, model } = this.props;
         const { questionIndex } = this.state;
         const total = model.questions.length;
@@ -208,14 +224,6 @@ export class ModelForm extends React.PureComponent<Props,State> {
         /*
          * 
          */
-        if (value['freeText']) {
-        //     const cpy = Object.assign({}, answers, {
-        //         [question.answerField]: value,
-        //         [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-        //     }) as UserAnswers;
-        //     dispatch(userSetAnswers(cpy));
-            return;
-        };
 
         /* 
          * Update store with the answer.
@@ -230,40 +238,48 @@ export class ModelForm extends React.PureComponent<Props,State> {
          * If this question accepts a single answer only, check what to render next.
          */
         if (question.type === QuestionType.SingleAnswer) {
-            const cpy = Object.assign({}, answers, {
-                [question.answerField]: value,
-                [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-            }) as UserAnswers;
-            dispatch(userSetAnswers(cpy));
+            
             this.handleSingleAnswerClick(isFirst, isLast, total);
             return;
         }
 
-        this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
+        // this.handleMultipleAnswerClick(value, isLast, alreadyCompleted);
     }
 
-    private handleMultipleAnswerClick = (value: any, isLast: boolean, alreadyCompleted: boolean) => {
+    private handleMultipleAnswerClick = (value: ModelQuestionOption, isLast: boolean, alreadyCompleted: boolean) => {
         const { dispatch, answers, model } = this.props;
-        const { questionIndex } = this.state;
 
-        const question = model.questions[questionIndex-1];
-        const cpy = Object.assign({}, answers, { 
-            [`${question.answerField}___${value}`]: '1',
-            [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
-        }) as UserAnswers;
-        dispatch(userSetAnswers(cpy));
-        // dispatch(userUpdateServerData());
+        if (value.freeText && value.answerField) {
+            const cpy = Object.assign({}, answers, { 
+                [value.answerField]: value.text,
+                [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
+            }) as UserAnswers;
+            dispatch(userSetAnswers(cpy));
+            return;
+        }
+
+        if (value.answerField) {
+            const cpy = Object.assign({}, answers, { 
+                [value.answerField]: '1',
+                [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
+            }) as UserAnswers;
+            dispatch(userSetAnswers(cpy));
+        }
         // return;
-
-
-
-
-
     }
 
     private handleSingleAnswerClick = (isFirst: boolean, isLast: boolean, total: number) => {
-        const { dispatch } = this.props;
+        const { dispatch, answers, model } = this.props;
+        const { questionIndex } = this.state;
+        const alreadyCompleted = answers[model.completeField] === FormState.Complete;
 
+        const question = model.questions[questionIndex-1]; 
+
+        const cpy = Object.assign({}, answers, {
+            [question.answerField]: value,
+            [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started
+        }) as UserAnswers;
+        dispatch(userSetAnswers(cpy));
         /*
          * If the form is complete or started and there is more than one question, 
          * update data on the server.
