@@ -229,20 +229,20 @@ export class ModelForm extends React.PureComponent<Props,State> {
              * If has a shouldRender() function, run and set as question if true.
              */
             if (next.shouldRender) {
-                console.log('error here')
                 if (next.shouldRender(answers)) {
-                    console.log('setting state')
                     this.setState({ questionIndex: i });
                     return;
                 }
+                i++;
+                continue;
+            }
             /*
              * Else move to next question.
              */
-            } else {
-                this.setState({ questionIndex: i });
-                return;
-            }
+            this.setState({ questionIndex: i });
+            return;
         }
         this.setState({ questionIndex: total });
+        this.setState({ questionIndex: i })
     }
 }
