@@ -2,6 +2,7 @@ import { UserAnswers, AnswerField } from "./User"
 
 export interface BaseModel {
     completeField: AnswerField;
+    description?: string;
     name: string;
     shortName: string;
     questions: ModelQuestion[];

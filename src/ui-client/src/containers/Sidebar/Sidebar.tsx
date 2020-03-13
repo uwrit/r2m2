@@ -42,12 +42,14 @@ export default class Sidebar extends React.PureComponent<Props> {
                 </div>
 
                 {/* Results */}
+                {/*
                 <div 
                     className={`${c}-option ${c}-option-results ${currentView === AppView.Results ? 'selected' : ''}`} 
                     onClick={this.handleResultsTabClick}>
                     <FiBarChart />
                     Results
                 </div>
+                */}
 
                 {/* Selected models */}
                 <div className={`${c}-subtext`}>My Selected Models</div>
