@@ -1,6 +1,6 @@
 import React from "react";
 import { BaseModel, QuestionType, ModelQuestionOption } from "../ModelsState";
-import { UserAnswers } from "../User";
+import { UserAnswers, ehr_q4_1, ehr_q4_2, ehr_q4_3 } from "../User";
 import { EHRForm } from "../../components/Models/EHR";
 
 export const EHR: BaseModel =
@@ -365,9 +365,16 @@ export const EHR: BaseModel =
             answerField: 'ehr_q8',
             getOptions: (answers: UserAnswers) => {
                 const opts: ModelQuestionOption[] = [];
-
-                // TODO: add option checks
-
+                // const ehr_q4_1 = ;
+                if (answers[ehr_q4_1] === '1') {
+                    opts.push({ text: ehr_q4_1.text, answerField: 'ehr_q8_1', value: '1' });
+                };
+                if (answers[ehr_q4_2] === '1') {
+                    opts.push({ text: , answerField: 'ehr_q8_2', value: '2' });
+                };
+                if (answers[ehr_q4_3] === '1') {
+                    opts.push({ text: , answerField: 'ehr_q8_3', value: '3' });
+                };
                 return opts;
             },
             text: "Please indicate which areas of research activity in the EHR are supported by Embedded Research EHR IT Staff (Select all that apply):",
@@ -379,8 +386,15 @@ export const EHR: BaseModel =
             getOptions: (answers: UserAnswers) => {
                 const opts: ModelQuestionOption[] = [];
 
-                // TODO: add option checks
-
+                if (answers[ehr_q4_1] === '1') {
+                    opts.push({ text: , answerField: 'ehr_q9_1', value: '1' });
+                };
+                if (answers[ehr_q4_2] === '1') {
+                    opts.push({ text: '', answerField: 'ehr_q9_2', value: '2' });
+                };
+                if (answers[ehr_q4_3] === '1') {
+                    opts.push({ text: , answerField: 'ehr_q9_3', value: '3' });
+                };
                 return opts;
             },
             text: "Please indicate which areas of research activity in the EHR are supported by Dedicated Research EHR IT Staff (Select all that apply):",

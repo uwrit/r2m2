@@ -219,14 +219,14 @@ export class ModelForm extends React.PureComponent<Props,State> {
         }
         return (value: any) => this.handleMultipleAnswerClick(o);
     }
-
+    
     private handleMultipleAnswerClick = (o: ModelQuestionOption) => {
         const { dispatch, answers, model } = this.props;
         const { questionIndex } = this.state;
         const total = model.questions.length;
         const isLast = questionIndex === total;
         const alreadyCompleted = answers[model.completeField] === FormState.Complete;
-
+        
         const cpy = Object.assign({}, answers, { 
             [o.answerField!]: answers[o.answerField!] === '1' ? '0' : '1',
             [model.completeField]: alreadyCompleted || isLast ? FormState.Complete : FormState.Started

@@ -81,9 +81,16 @@ export type AnswerField =
 
     // Embedded Research EHR
     'ehr_q8'              |
+    'ehr_q8_1'            |
+    'ehr_q8_2'            |
+    'ehr_q8_3'            |
+
 
     // Dedicated Research EHR
     'ehr_q9'              |
+    'ehr_q9_1'            |
+    'ehr_q9_2'            |
+    'ehr_q9_3'            |
 
     // Epic Certifications
     'ehr_q10'             |
@@ -131,6 +138,14 @@ export interface UserUpdateDTO {
     count: number;
 }
 
+export const ehr_q4_1: AnswerField = 'ehr_q4_1';
+export const ehr_q4_2: AnswerField = 'ehr_q4_2';
+export const ehr_q4_3: AnswerField = 'ehr_q4_3';
+// export const ehr_q4_4: AnswerField = 'ehr_q4_4';
+// export const ehr_q4_5: AnswerField = 'ehr_q4_5';
+// export const ehr_q4_6: AnswerField = 'ehr_q4_6';
+// export const ehr_q4_7: AnswerField = 'ehr_q4_7';
+// export const ehr_q4_8: AnswerField = 'ehr_q4_8';
 // EHR
 export const EHR_Q1: AnswerField  = 'ehr_q1';
 // export const EHR_Q2: AnswerField  = 'ehr_q2';
