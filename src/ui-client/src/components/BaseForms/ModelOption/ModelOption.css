@@ -43,3 +43,13 @@
     top: 0;
     width: 20px;
 }
+
+.model-option-text-input {
+    width: 100%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

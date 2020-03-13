@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseForm from '../BaseForm/BaseForm';
-import { FiChevronLeft } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import './ModelTransitionForm.css';
 
 interface Props {
@@ -10,6 +10,7 @@ interface Props {
     content: string | JSX.Element | JSX.Element[];
     cornerInfo?: string | JSX.Element;
     onGoBackClick?: () => any;
+    onNextClick?: () => any;
 }
 
 enum TransitionState {
@@ -29,6 +30,7 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
     private moveTimeDelayMs = 300;
     private blankTimeDelayMs = 300;
     private goBackClicked = false;
+    private nextClicked = false;
 
     public constructor(props: Props) {
         super(props);
@@ -76,7 +78,7 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
 
     public render() {
         const c = this.className;
-        const { cornerInfo, onGoBackClick } = this.props;
+        const { cornerInfo, onGoBackClick, onNextClick } = this.props;
         const { outgoing, transition } = this.state;
         const classes = [ c ];
         let showOutgoing = false;
@@ -99,6 +101,7 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
                     </div>
                     {outgoing.cornerInfo && <div className={`${c}-corner-info`}>{outgoing.cornerInfo}</div>}
                     {outgoing.onGoBackClick && <button className={'maturity-model-button secondary'}><FiChevronLeft />Go Back</button> }
+                    {outgoing.onNextClick && <button className={'maturity-model-button next'}>Next<FiChevronRight /></button> }
                 </div>
             );
         }
@@ -113,6 +116,7 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
                 </div>
                 {cornerInfo && <div className={`${c}-corner-info`}>{cornerInfo}</div>}
                 {onGoBackClick && <button className={'maturity-model-button secondary'} onClick={this.handleGoBackClick}><FiChevronLeft />Go Back</button> }
+                {onNextClick && <button className={'maturity-model-button next'} onClick={this.handleNextClick}>Next<FiChevronRight /></button> }
             </div>
         );
     }
@@ -123,5 +127,13 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
 
         this.goBackClicked = true;
         onGoBackClick();
+    }
+
+    private handleNextClick = () => {
+        const { onNextClick } = this.props;
+        if (!onNextClick) return;
+
+        this.nextClicked = true;
+        onNextClick();
     }
 }

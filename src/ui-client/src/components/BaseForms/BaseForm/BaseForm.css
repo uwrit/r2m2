@@ -9,6 +9,8 @@
     opacity: 1;
     padding: 10px 10px 10px;
     text-align: center;
+    overflow-y: auto;
+    max-height: 650px;
 }
 
 .form-inner {

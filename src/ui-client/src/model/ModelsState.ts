@@ -30,6 +30,7 @@ export interface ModelQuestion {
 }
 
 export interface ModelQuestionOption {
+    answerField?: AnswerField;
     freeText?: boolean;
     text: string | JSX.Element | JSX.Element[];
     value: LikertStringOneToSixty;
@@ -47,5 +48,5 @@ export type LikertStringOneToSixty = '' | '1'  | '2'  | '3'  | '4'  | '5'  | '6'
                                         | '41' | '42' | '43' | '44' | '45' | '46' | '47' | '48' | '49' | '50'
                                         | '51' | '52' | '53' | '54' | '55' | '56' | '57' | '58' | '59' | '60'
 export enum FormState { NotStarted = '0', Started = '1', Complete = '2' }
-export enum QuestionType { SingleAnswer = 0, MultipleAnswer = 0 }
+export enum QuestionType { SingleAnswer = 0, MultipleAnswer = 1 }
 export type AnswerTypes = LikertStringOneToSixty | FormState

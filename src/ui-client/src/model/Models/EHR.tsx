@@ -8,7 +8,6 @@ export const EHR: BaseModel =
     completeField: 'ehr_complete',
     name: 'EHR Maturity Model',
     shortName: 'EHR',
-    // description: 'The RIOSM self-assessment survey uses short vignettes to describe a five-level maturity continuum, based on the maturity levels first proposed in the Capability Maturity Model (CMM).  RIOSM’s maturity level vignettes were derived from over 20 hours of interviews at 12 sites.  The result is an evidence-based model derived from data on the variability of capabilities and activities across institutions.',
     render: (dispatch: any, answers: UserAnswers) => <EHRForm dispatch={dispatch} answers={answers} />,
     questions: [
         {
@@ -42,7 +41,7 @@ export const EHR: BaseModel =
             answerField: 'ehr_q2',
             shouldRender: (answers: UserAnswers) => new Set(['4', '5']).has(answers['ehr_q1']),
             text: "What EHR system does your institution currently use?",
-            type: QuestionType.SingleAnswer,
+            type: QuestionType.MultipleAnswer,
             options: [
                 {
                     text: "Allscripts",
@@ -69,14 +68,10 @@ export const EHR: BaseModel =
                     value: '6'
                 },
                 {
+                    answerField: 'ehr_q2_1',
                     freeText: true,
                     text: "Other (please specify)",
                     value: '7'
-                },
-                {
-                    freeText: true,
-                    text: "Combination (please specify)",
-                    value: '8'
                 }
             ]
         },
@@ -102,14 +97,17 @@ export const EHR: BaseModel =
             type: QuestionType.MultipleAnswer,
             options: [
                 {
+                    answerField: 'ehr_q4_1',
                     text: "Security/Access for Research Users",
                     value: '1'
                 },
                 {
+                    answerField: 'ehr_q4_2',
                     text: "Research Billing/Compliance functions",
                     value: '2'
                 },
                 {
+                    answerField: 'ehr_q4_3',
                     text: "Research Reporting",
                     value: '3'
                 },

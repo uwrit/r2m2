@@ -23,17 +23,7 @@ export const defaultUserState = (): UserState => {
 
             // EHR
             'ehr_complete': FormState.NotStarted,
-            'ehr_q1': '',
-            'ehr_q2': '',
-            'ehr_q3': '',
-            'ehr_q4': '',
-            'ehr_q5': '',
-            'ehr_q6a': '',
-            'ehr_q6b': '',
-            'ehr_q7': '',
-            'ehr_q8': '',
-            'ehr_q9': '',
-            'ehr_q10': ''
+            'ehr_q1': ''
         },
         answersLoadState: AnswerScoreLoadState.NotLoaded,
         email: '',
@@ -55,20 +45,7 @@ const userDefaultScore = (): BaseAnswerScore => {
 
 const allDefaultScore = (): AllAnswerScore => {
     return {
-        ehr: 0,
-        ehr_questions: {
-            q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q2Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q3Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q4Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q5Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q6AStats: { mean: 0, min: 0, max: 0, median: 0 },
-            q6BStats: { mean: 0, min: 0, max: 0, median: 0 },
-            q7Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q8Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q9Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q10Stats: { mean: 0, min: 0, max: 0, median: 0 }
-        }
+        ehr: 0
     };
 }
 
