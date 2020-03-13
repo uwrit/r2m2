@@ -66,6 +66,26 @@ export type AnswerField =
     'ehr_q4_3___3'        |
     'ehr_q4_3___4'        |
     'ehr_q4_3___5'        |
+    'ehr_q4_4'            |
+    'ehr_q4_4___1'        |
+    'ehr_q4_4___2'        |
+    'ehr_q4_4___3'        |
+    'ehr_q4_4___4'        |
+    'ehr_q4_4___5'        |
+    'ehr_q4_4___6'        |
+    'ehr_q4_4___7'        |
+    'ehr_q4_4___8'        |
+    'ehr_q4_5'            |
+    'ehr_q4_5___1'        |
+    'ehr_q4_5___2'        |
+    'ehr_q4_5___3'        |
+    'ehr_q4_5___4'        |
+    'ehr_q4_5_1___1'      |
+    'ehr_q4_5_1___2'      |
+    'ehr_q4_5_1___3'      |
+    'ehr_q4_5_1___4'      |
+    'ehr_q4_5_2___1'      |
+    'ehr_q4_5_2___2'      |
     
     // Staffing Model
     'ehr_q5'              |

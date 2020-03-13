@@ -10,6 +10,7 @@ import {
 export const EHR: BaseModel =
 {
     completeField: 'ehr_complete',
+    description: 'The EHR Maturity Model is designed to measure the purposes, personnel, and workflows utilized at your institution around your Electronic Health Record(s).',
     name: 'EHR Maturity Model',
     shortName: 'EHR',
     render: (dispatch: any, answers: UserAnswers) => <EHRForm dispatch={dispatch} answers={answers} />,
@@ -44,7 +45,7 @@ export const EHR: BaseModel =
         {
             answerField: 'ehr_q2',
             shouldRender: (answers: UserAnswers) => new Set(['4', '5']).has(answers['ehr_q1']),
-            text: "What EHR system(s) does your institution currently use?",
+            text: "What EHR system(s) does your institution currently use? (Select all that apply)",
             type: QuestionType.MultipleAnswer,
             options: [
                 {
@@ -80,6 +81,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q3',
+            shouldRender: (answers: UserAnswers) => new Set(['4', '5']).has(answers['ehr_q1']),
             text: "Choose the statement that best describes your institution’s current Research activity in the EHR:",
             type: QuestionType.SingleAnswer,
             options: [
@@ -176,7 +178,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q6a',
-            shouldRender: (answers: UserAnswers) => new Set(['1', '3']).has(answers['ehr_q5']),
+            shouldRender: (answers: UserAnswers) => new Set(['1','3']).has(answers['ehr_q5']),
             text: "How many individuals embedded within your Information Technology (IT) teams have a percent of their effort spent building, testing, maintaining tools within the EHR which support Research?",
             type: QuestionType.SingleAnswer,
             options: [
@@ -200,7 +202,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q6b',
-            shouldRender: (answers: UserAnswers) => new Set(['1', '2']).has(answers['ehr_q5']),
+            shouldRender: (answers: UserAnswers) => new Set(['2','3']).has(answers['ehr_q5']),
             text: "How many individuals’ effort within your institution are dedicated to building, testing, maintaining tools within the EHR which support research?",
             type: QuestionType.SingleAnswer,
             options: [
@@ -224,6 +226,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q7',
+            shouldRender: (answers: UserAnswers) => new Set(['1','3']).has(answers['ehr_q5']),
             text: "Of the individuals embedded within your Information Technology (IT) teams that support research within the EHR, what is the average percent effort they spend working on research builds, testing and maintenance within the EHR?",
             type: QuestionType.SingleAnswer,
             options: [
@@ -251,6 +254,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q8',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2',
             getOptions: (answers: UserAnswers) => {
                 const opts: ModelQuestionOption[] = [];
                 for(let i=0; i<ehr_q4_arr.length; i++){
@@ -267,6 +271,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q9',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2',
             getOptions: (answers: UserAnswers) => {
                 const opts: ModelQuestionOption[] = [];
                 for(let i=0; i<ehr_q4_arr.length; i++){
@@ -283,6 +288,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q10',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2',
             text: <span>If your site uses Epic, what Epic certifications and/or proficiencies do the IT individuals <strong>supporting research</strong> in the EHR possess? (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [
@@ -538,6 +544,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q10_1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___1'] === '1',
             text: <span>Epic certifications - Anesthesia (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [
@@ -580,6 +587,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q10_2',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___2'] === '1',
             text: <span>Epic certifications - ASAP (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [
@@ -612,6 +620,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q10_3',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___3'] === '1',
             text: <span>Epic certifications - Beacon (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [

@@ -54,8 +54,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
                     content={
                         <div>
                             <div className={`${c}-desc`}>
-                                {/* <div className={`${c}-desc-inner`}>{model.description}</div> */}
-                                <div className={`${c}-desc-inner`}>{model.completeField}</div>
+                                <div className={`${c}-desc-inner`}>{model.description}</div>
                             </div>
                             <button className={`maturity-model-button primary-green shadow`} onClick={this.handleGetStartedClick}>
                                 {buttonText}
