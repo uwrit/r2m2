@@ -97,14 +97,17 @@ export const EHR: BaseModel =
             type: QuestionType.MultipleAnswer,
             options: [
                 {
+                    answerField: 'ehr_q4_1',
                     text: "Security/Access for Research Users",
                     value: '1'
                 },
                 {
+                    answerField: 'ehr_q4_2',
                     text: "Research Billing/Compliance functions",
                     value: '2'
                 },
                 {
+                    answerField: 'ehr_q4_3',
                     text: "Research Reporting",
                     value: '3'
                 },

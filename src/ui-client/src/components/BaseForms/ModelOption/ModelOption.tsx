@@ -28,7 +28,6 @@ export default class ModelOption extends React.PureComponent<Props,State> {
         return (
             <div className={classes.join(' ')} onClick={this.handleClick}>
                 <div className={`${c}-value`}>{data.value}</div>
-                {/* <div className={`${c}-text`}>{data.text}</div> */}
                 {!data.freeText
                     ? <div className={`${c}-text`}>{data.text}</div>
                     : <div className={`${c}-text`}>
@@ -38,15 +37,15 @@ export default class ModelOption extends React.PureComponent<Props,State> {
                 }
             </div>
         );
-    }
+    }   
 
     private handleClick = () => {
         const { data, onClick } = this.props;
-        // onClick(data.value);
+
         if (!data.freeText) {
             onClick(data.value);            
         } else {
-            const val = {text: this.state.text, freeText: true};
+            const val = {value: data.value, text: this.state.text, freeText: true};
             onClick(val);
         }
     }
