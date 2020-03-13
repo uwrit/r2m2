@@ -14,13 +14,7 @@ export interface ModelQuestion {
     options: ModelQuestionOption[];
     text: string | JSX.Element;
 
-    type: QuestionType; // If 
-                        //    SingleAnswer:   Renders normally and the clicked value is assigned to this question
-                        //    MultipleAnswer: Users can select multiple and a 'Next' button is shown in lower right.
-                        //                    ALSO: Each clicked value updates the [UserAnswers] with the [ModelQuestion].[AnswerField] + "___" + [ModelQuestionOption].[value] = 1, to mimic REDCap.
-                        //                    EXAMPLE: [ModelQuestion].[AnswerField] = 'ehr_q4_1'
-                        //                             [ModelQuestionOption].[value] = '1'
-                        //                             If a user clicks this option, [UserAnswers] is updated with: answers['ehr_q4_1___1'] = '1'
+    type: QuestionType;
  
     // Optional. If present, called on load. Must return an array of ModelQuestionOptions.
     getOptions?: (answers: UserAnswers) => ModelQuestionOption[];
