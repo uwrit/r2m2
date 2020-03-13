@@ -273,7 +273,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         const { questionIndex } = this.state;
         const alreadyCompleted = answers[model.completeField] === FormState.Complete;
 
-        const question = model.questions[questionIndex-1];
+        const question = model.questions[questionIndex-1]; 
 
         const cpy = Object.assign({}, answers, {
             [question.answerField]: value,
