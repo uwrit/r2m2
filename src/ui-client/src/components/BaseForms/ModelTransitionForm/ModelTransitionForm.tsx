@@ -31,7 +31,6 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
     private moveTimeDelayMs = 300;
     private blankTimeDelayMs = 300;
     private goBackClicked = false;
-    private nextClicked = false;
 
     public constructor(props: Props) {
         super(props);
@@ -134,7 +133,6 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
         const { onNextClick } = this.props;
         if (!onNextClick) return;
 
-        this.nextClicked = true;
         onNextClick();
     }
 }

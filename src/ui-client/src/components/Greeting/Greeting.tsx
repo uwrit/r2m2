@@ -6,9 +6,9 @@ import { FiChevronRight } from 'react-icons/fi';
 import { modelSetCurrent } from '../../actions/model';
 import { setCurrentView } from '../../actions/general';
 import { AppView } from '../../model/GeneralState';
+import { EHR } from '../../model/Models/EHR'
+import { models } from '../../reducers/model';
 import './Greeting.css';
-
-import {EHR} from '../../model/Models/EHR'
 
 interface Props {
     dispatch: any;
@@ -51,19 +51,16 @@ export default class Greeting extends React.PureComponent<Props> {
                         <div className={`${c}-main-text`}>
                             <div>
                                <span>
-                                   The CD2H Maturity Model survey tool is designed to help CTSAs better understand their levels of 
-                                   informatics maturity and how they compare to others. All data entered is private and will not be 
-                                   shared with other CTSAs. When you're done, you can 
                                 </span>
                                 <span> </span>
-                               <span 
+                               {/* <span 
                                     className={`${c}-selectable-text`} 
                                     onClick={this.handleSeeResultsClick}>
                                     view how your maturity scores compare to others
                                 </span>
                                {!newUser &&
                                <span> or <span className={`${c}-selectable-text`} onClick={this.handleReselectModelsClick}>reselect your maturity models of interest</span> anytime</span>}
-                               .
+                               . */}
                             </div>
 
                             {/* Get started button */}
