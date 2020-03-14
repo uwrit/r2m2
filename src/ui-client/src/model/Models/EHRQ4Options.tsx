@@ -58,11 +58,11 @@ export const ehr_q4_2___8: ModelQuestionOption = {
 }
 export const ehr_q4_2___9: ModelQuestionOption = {
     answerField: 'ehr_q4_2___9',
-    text: <span>Research Task Builds</span>
+    text: <span>Research <strong>Task Builds</strong></span>
 }
 export const ehr_q4_2___10: ModelQuestionOption = {
     answerField: 'ehr_q4_2___10',
-    text: <span>Research Event notifications</span>
+    text: <span>Research <strong>Event</strong> notifications</span>
 }
 export const ehr_q4_2___11: ModelQuestionOption = {
     answerField: 'ehr_q4_2___11',
