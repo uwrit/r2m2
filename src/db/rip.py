@@ -25,6 +25,7 @@ for l in text.split('\n'):
         if n > 1:
             csv += '| '
         csv += f'{n}, {l[1:].strip()}'
+        n += 1
 
 with open(os.getcwd() + os.path.sep + 'new.csv', 'w') as f:
     f.write(csv)
