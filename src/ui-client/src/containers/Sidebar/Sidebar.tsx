@@ -5,6 +5,7 @@ import { setCurrentView } from '../../actions/general';
 import { AppView } from '../../model/GeneralState';
 import SidebarModelTab from '../../components/Sidebar/SidebarModelTab';
 import { UserAnswers } from '../../model/User';
+import { EHR } from '../../model/Models/EHR';
 import './Sidebar.css';
 
 interface Props {
@@ -20,7 +21,8 @@ export default class Sidebar extends React.PureComponent<Props> {
     public render() {
         const c = this.className;
         const { currentView, dispatch, models, answers } = this.props;
-        const selected = models.all.filter(m => m.selected);
+        // const selected = models.all.filter(m => m.selected);
+        const selected = EHR;
 
         return (
             <div className={c}>
@@ -53,12 +55,16 @@ export default class Sidebar extends React.PureComponent<Props> {
 
                 {/* Selected models */}
                 <div className={`${c}-subtext`}>My Selected Models</div>
-                {selected.map(m => (
+                {/* {selected.map(m => (
                     <SidebarModelTab 
                         key={m.completeField} answers={answers} 
                         dispatch={dispatch} model={m} selected={models.current === m}
                     />)
-                )}
+                )} */}
+                <SidebarModelTab
+                    key={EHR.completeField} answers={answers}
+                    dispatch={dispatch} model={EHR} selected={true}
+                />
             </div>
         );
     }
