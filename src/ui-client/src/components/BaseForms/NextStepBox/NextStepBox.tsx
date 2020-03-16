@@ -5,8 +5,11 @@ import { ModelsState, FormState, BaseModel } from '../../../model/ModelsState';
 import { UserState } from '../../../model/UserState';
 import { modelSetCurrent } from '../../../actions/model';
 import { setCurrentView } from '../../../actions/general';
+import { userUpdateServerData, userSetAnswers } from '../../../actions/user';
 import { AppView } from '../../../model/GeneralState';
 import { FiChevronRight } from 'react-icons/fi';
+import { EHR } from '../../../model/Models/EHR';
+import { UserAnswers } from '../../../model/User';
 import './NextStepBox.css';
 
 interface OwnProps {
@@ -31,28 +34,15 @@ class NextStepBox extends React.PureComponent<Props> {
         const len = remaining.length;
         const c = this.className;
 
-        if (!len) {
-            return (
-                <div className={c}>
-                    <div>You've completed all of your selected models. Take a look at the results and see how you compare.</div>
-                    <button className={'maturity-model-button primary-green shadow'} onClick={this.handleSeeResultsClick}>
-                        View Results
-                        <FiChevronRight />
-                    </button>
-                </div>
-            );
-        }
-        
-        const next = remaining[0];
         return (
             <div className={c}>
-                <div>You have {len} model{len > 1 ? 's' : ''} remaining. Next up is the {next.name}</div>
-                <button className={'maturity-model-button primary-green shadow'} onClick={this.handleGoToNextSurveyClick.bind(null, next)}>
-                    Go to next model
+                <div>Thank you for completing the survey.</div>
+                <button className={'maturity-model-button primary-green shadow'} onClick={this.handleSurveyEndClick}>
+                    Go Back Home
                     <FiChevronRight />
                 </button>
             </div>
-        )
+        );
     }
 
     public handleGoToNextSurveyClick = (model: BaseModel) => {
@@ -60,9 +50,13 @@ class NextStepBox extends React.PureComponent<Props> {
         dispatch(modelSetCurrent(model));
     }
 
-    public handleSeeResultsClick = () => {
-        const { dispatch } = this.props;
-        dispatch(setCurrentView(AppView.Results));
+    public handleSurveyEndClick = () => {
+        const { dispatch, user } = this.props;
+        const cpy = Object.assign({}, user.answers, {
+            [EHR.completeField]: FormState.Complete
+        }) as UserAnswers;
+        dispatch(userSetAnswers(cpy));
+        dispatch(setCurrentView(AppView.Greeting));
     }
 }
 
