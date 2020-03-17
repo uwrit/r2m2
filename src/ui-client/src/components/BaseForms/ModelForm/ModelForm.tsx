@@ -80,7 +80,6 @@ export class ModelForm extends React.PureComponent<Props,State> {
                     header={`You've completed the ${model.name} survey!`}
                     content={<NextStepBox />}
                     onGoBackClick={this.handleGoBackClick}
-                    onNextClick={this.handleNextClick}
                 />
             );
         }
