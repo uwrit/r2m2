@@ -113,16 +113,58 @@ export type AnswerField =
 
     // Embedded Research EHR
     'ehr_q8'              |
-    'ehr_q8___1'          |
-    'ehr_q8___2'          |
-    'ehr_q8___3'          |
-
 
     // Dedicated Research EHR
     'ehr_q9'              |
-    'ehr_q9_1'            |
-    'ehr_q9_2'            |
-    'ehr_q9_3'            |
+
+    // ehr_q8 and ehr_q9 options
+    'ehr_q___1'           |
+    'ehr_q___2'           |
+    'ehr_q___3'           |
+    'ehr_q___4'           |
+    'ehr_q___5'           |
+    'ehr_q___6'           |
+    'ehr_q___7'           |
+    'ehr_q___8'           |
+    'ehr_q___9'           |
+    'ehr_q___10'          |
+    'ehr_q___11'          |
+    'ehr_q___12'          |
+    'ehr_q___13'          |
+    'ehr_q___14'          |
+    'ehr_q___15'          |
+    'ehr_q___16'          |
+    'ehr_q___17'          |
+    'ehr_q___18'          |
+    'ehr_q___19'          |
+    'ehr_q___20'          |
+    'ehr_q___21'          |
+    'ehr_q___22'          |
+    'ehr_q___23'          |
+    'ehr_q___24'          |
+    'ehr_q___25'          |
+    'ehr_q___26'          |
+    'ehr_q___27'          |
+    'ehr_q___28'          |
+    'ehr_q___29'          |
+    'ehr_q___30'          |
+    'ehr_q___31'          |
+    'ehr_q___32'          |
+    'ehr_q___33'          |
+    'ehr_q___34'          |
+    'ehr_q___35'          |
+    'ehr_q___36'          |
+    'ehr_q___37'          |
+    'ehr_q___38'          |
+    'ehr_q___39'          |
+    'ehr_q___40'          |
+    'ehr_q___41'          |
+    'ehr_q___42'          |
+    'ehr_q___43'          |
+    'ehr_q___44'          |
+    'ehr_q___45'          |
+    'ehr_q___46'          |
+    'ehr_q___47'          |
 
     // Epic Certifications
     'ehr_q10'             |

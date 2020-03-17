@@ -26,6 +26,7 @@ export interface ModelQuestion {
 
 export interface ModelQuestionOption {
     answerField?: AnswerField;
+    q8_9AnswerField?: AnswerField;
     freeText?: boolean;
     text: string | JSX.Element | JSX.Element[];
     value?: LikertStringOneToSixty;

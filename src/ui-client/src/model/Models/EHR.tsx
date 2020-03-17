@@ -97,7 +97,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q4',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: "What research activities are performed in your institution’s EHR? (Select all that apply):",
             type: QuestionType.MultipleAnswer,
             options: [
@@ -138,70 +138,70 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q4_1',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4___1'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___1'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Security/Access</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_1_arr
         },
         {
             answerField: 'ehr_q4_2',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4___2'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___2'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Billing/Compliance functions</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_2_arr
         },
         {
             answerField: 'ehr_q4_3',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4___3'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___3'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Reporting</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_3_arr
         },
         {
             answerField: 'ehr_q4_4',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4___4'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___4'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Clinical Research Tools</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_4_arr
         },
         {
             answerField: 'ehr_q4_5',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4___5'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___5'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Specific Care Management</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_5_arr
         },
         {
             answerField: 'ehr_q4_5_1',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4_5___3'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4_5___3'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Specific Care Management - Patient Portal</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_5_1_arr
         },
         {
             answerField: 'ehr_q4_6',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4___6'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___6'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Interfaces &amp; Integrations</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_6_arr
         },
         {
             answerField: 'ehr_q4_7',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4___7'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___7'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Oncology Tools</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_7_arr
         },
         {
             answerField: 'ehr_q4_8',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q4___8'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q4___8'] === '1' && answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             text: <span>What research activities are performed in your institution’s EHR <strong>regarding Research Investigational Drug Services/Pharmacy</strong>? (Select all that apply)</span>,
             type: QuestionType.MultipleAnswer,
             options: ehr_q4_8_arr
         },
         {
             answerField: 'ehr_q5',
-            shouldRender: (answers: UserAnswers) => new Set(['4', '5']).has(answers['ehr_q1']) && new Set(['2']).has(answers['ehr_q3']),
+            shouldRender: (answers: UserAnswers) => new Set(['4', '5']).has(answers['ehr_q1']) && answers['ehr_q3'] === '2',
             text: "Choose the staffing model that best represents your institutions model for research IT support in the EHR:",
             type: QuestionType.SingleAnswer,
             options: [
@@ -221,7 +221,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q6a',
-            shouldRender: (answers: UserAnswers) => new Set(['1','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && new Set(['2']).has(answers['ehr_q3']),
+            shouldRender: (answers: UserAnswers) => new Set(['1','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && answers['ehr_q3'] === '2',
             text: "How many individuals embedded within your Information Technology (IT) teams have a percent of their effort spent building, testing, maintaining tools within the EHR which support Research?",
             type: QuestionType.SingleAnswer,
             options: [
@@ -245,7 +245,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q6b',
-            shouldRender: (answers: UserAnswers) => new Set(['2','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && new Set(['2']).has(answers['ehr_q3']),
+            shouldRender: (answers: UserAnswers) => new Set(['2','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && answers['ehr_q3'] === '2',
             text: "How many individuals’ effort within your institution are dedicated to building, testing, maintaining tools within the EHR which support research?",
             type: QuestionType.SingleAnswer,
             options: [
@@ -269,7 +269,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q7',
-            shouldRender: (answers: UserAnswers) => new Set(['1','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && new Set(['2']).has(answers['ehr_q3']),
+            shouldRender: (answers: UserAnswers) => new Set(['1','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && answers['ehr_q3'] === '2',
             text: "Of the individuals embedded within your Information Technology (IT) teams that support research within the EHR, what is the average percent effort they spend working on research builds, testing and maintenance within the EHR?",
             type: QuestionType.SingleAnswer,
             options: [
@@ -297,13 +297,13 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q8',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             getOptions: (answers: UserAnswers) => {
                 const opts: ModelQuestionOption[] = [];
                 for (let i = 0; i < ehr_q4_arr.length; i++) {
                     const a = ehr_q4_arr[i];
                     if (answers[a.answerField!] === '1') {
-                        opts.push({ ...a, answerField: 'ehr_q8_' + a.answerField } as any);
+                        opts.push({ ...a, answerField: a.q8_9AnswerField!.toString().replace('q','q8') } as any);
                     }
                 }
                 return opts;
@@ -314,13 +314,13 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q9',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q3'] === '2' && new Set(['4', '5']).has(answers['ehr_q1']),
             getOptions: (answers: UserAnswers) => {
                 const opts: ModelQuestionOption[] = [];
                 for (let i = 0; i < ehr_q4_arr.length; i++) {
                     const a = ehr_q4_arr[i];
                     if (answers[a.answerField!] === '1') {
-                        opts.push({ ...a, answerField: 'ehr_q9_' + a.answerField } as any);
+                        opts.push({ ...a, answerField: a.q8_9AnswerField!.toString().replace('q','q9') } as any);
                     }
                 }
                 return opts;
@@ -583,7 +583,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q10_1',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___1'] === '1' && new Set(['4','5']).has(answers['ehr_q1']) && new Set(['2']).has(answers['ehr_q3']),
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___1'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Anesthesia (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [
@@ -619,7 +619,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q10_2',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___2'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___2'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>ASAP (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [
@@ -647,7 +647,7 @@ export const EHR: BaseModel =
         },
         {
             answerField: 'ehr_q10_3',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___3'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___3'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Beacon (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [
@@ -670,7 +670,7 @@ export const EHR: BaseModel =
             ]
         }, {
             answerField: 'ehr_q10_4',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___4'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___4'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Beaker (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -703,7 +703,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_5',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___5'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___5'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>BedTime (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -721,7 +721,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_6',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___6'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___6'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Benefits Engine (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -736,7 +736,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_7',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___7'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___7'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Bones (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -745,7 +745,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_8',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___8'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___8'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Bridges (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -754,7 +754,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_9',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___9'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___9'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Bugsy (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -766,7 +766,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_10',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___10'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___10'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Caboodle (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -805,7 +805,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_11',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___11'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___11'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Cadence (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -841,7 +841,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_12',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___12'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___12'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Care Everywhere (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -853,7 +853,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_13',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___13'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___13'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Charge Router (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -862,7 +862,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_14',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___14'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___14'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Chronicles (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -880,7 +880,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_15',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___15'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___15'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Claims (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -904,7 +904,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_16',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___16'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___16'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Clinical Case Management (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -913,7 +913,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_17',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___17'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___17'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Cogito (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -937,7 +937,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_18',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___18'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___18'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Cogito Clarity (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -964,7 +964,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_19',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___19'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___19'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Cupid (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -994,7 +994,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_20',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___20'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___20'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Data Courier (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1003,7 +1003,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_21',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___21'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___21'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Dorothy (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1027,7 +1027,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_22',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___22'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___22'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Epic Client Systems Administration (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1045,7 +1045,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_23',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___23'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___23'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>EpicCare Ambulatory (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1075,7 +1075,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_24',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___24'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___24'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>EpicCare Inpatient (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1126,7 +1126,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_25',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___25'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___25'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>EpicCare Link (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1138,7 +1138,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_26',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___26'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___26'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Grand Central (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1165,7 +1165,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_27',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___27'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___27'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Health Information Fundamentals (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1192,7 +1192,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_28',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___28'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___28'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Healthy Planet (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1210,7 +1210,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_29',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___29'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___29'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>HOD (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1222,7 +1222,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_30',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___30'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___30'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Home Health Revenue Cycle (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1243,7 +1243,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_31',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___31'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___31'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Hospice Billing (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1258,7 +1258,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_32',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___32'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___32'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Identity (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1276,7 +1276,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_33',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___33'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___33'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Interconnect (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1285,7 +1285,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_34',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___34'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___34'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Kaleidoscope (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1300,7 +1300,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_35',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___35'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___35'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Long Term Care (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1309,7 +1309,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_36',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___36'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___36'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>MyChart (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1321,7 +1321,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_37',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___37'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___37'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Nurse Triage (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1336,7 +1336,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_38',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___38'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___38'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Operational Database (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1345,7 +1345,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_39',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___39'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___39'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>OpTime (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1366,7 +1366,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_40',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___40'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___40'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Physician Builder (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1387,7 +1387,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_41',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___41'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___41'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Phoenix (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1399,7 +1399,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_42',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___42'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___42'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Prelude (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1429,7 +1429,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_43',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___43'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___43'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Radiant (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1456,7 +1456,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_44',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___44'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___44'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Referrals (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1468,7 +1468,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_45',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___45'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___45'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Rehab (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1477,7 +1477,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_46',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___46'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___46'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Research (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1525,7 +1525,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_47',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___47'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___47'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Resolute HB for Single Billing Office (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1576,7 +1576,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_48',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___48'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___48'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Resolute Hospital Billing (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1627,7 +1627,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_49',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___49'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___49'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Resolute PB for Single Billing Office (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1663,7 +1663,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_50',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___50'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___50'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Resolute Professional Billing (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1711,7 +1711,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_51',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___51'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___51'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Security and Access (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1720,7 +1720,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_52',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___52'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___52'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Stork (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1729,7 +1729,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_53',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___53'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___53'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Tapestry (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1777,7 +1777,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_54',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___54'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___54'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Training, Environments and Documentation (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1885,7 +1885,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_55',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___55'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___55'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Welcome (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1894,7 +1894,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_56',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___56'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___56'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Willow Ambulatory (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1915,7 +1915,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_57',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___57'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___57'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Willow Inpatient (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1945,7 +1945,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_58',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___58'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___58'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Willow Inventory (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1954,7 +1954,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_59',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___59'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___59'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Wisdom (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1969,7 +1969,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_60',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___60'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___60'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>SmartForms (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
@@ -1978,7 +1978,7 @@ export const EHR: BaseModel =
             },]
         }, {
             answerField: 'ehr_q10_61',
-            shouldRender: (answers: UserAnswers) => answers['ehr_q10___61'] === '1',
+            shouldRender: (answers: UserAnswers) => answers['ehr_q10___61'] === '1' && answers['ehr_q3'] === '2' && new Set(['4','5']).has(answers['ehr_q1']),
             text: <span>Order Transmittal (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: [{
