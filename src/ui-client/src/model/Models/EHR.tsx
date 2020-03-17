@@ -6,6 +6,7 @@ import {
     ehr_q4_1_arr, ehr_q4_2_arr, ehr_q4_3_arr, ehr_q4_4_arr, ehr_q4_5_arr,
     ehr_q4_5_1_arr, ehr_q4_6_arr, ehr_q4_7_arr, ehr_q4_8_arr, ehr_q4_arr
     } from "./EHRQ4Options";
+
 export const EHR: BaseModel =
 {
     completeField: 'ehr_complete',
@@ -20,15 +21,15 @@ export const EHR: BaseModel =
             type: QuestionType.SingleAnswer,
             options: [
                 {
-                    text: "We do not currently use an EHR and have no plans to implement an EHR.",
+                    text: <span>We do <strong>not</strong> currently use an EHR and have no plans to implement an EHR.</span>,
                     value: '1'
                 },
                 {
-                    text: "We do not currently use an EHR, but plan to implement an EHR in the next 1-3 years.",
+                    text: <span>We do <strong>not</strong> currently use an EHR, but plan to implement an EHR in the next 1-3 years.</span>,
                     value: '2'
                 },
                 {
-                    text: "We do not currently use an EHR, but are in the process of implementing an EHR to go live within 6 months to a year.",
+                    text: <span>We do <strong>not</strong> currently use an EHR, but are in the process of implementing an EHR to go live within 6 months to a year.</span>,
                     value: '3'
                 },
                 {
@@ -85,7 +86,7 @@ export const EHR: BaseModel =
             type: QuestionType.SingleAnswer,
             options: [
                 {
-                    text: "We do not allow research activity (such as recruitment through a patient portal, research documentation, research billing etc.) in the EHR (does not include data exports).",
+                    text: <span>We do <strong>not</strong> allow research activity (such as recruitment through a patient portal, research documentation, research billing etc.) in the EHR (does not include data exports).</span>,
                     value: '1'
                 },
                 {
@@ -336,251 +337,247 @@ export const EHR: BaseModel =
             options: [
                 {
                     answerField: 'ehr_q10___1',
-                    text: "Anesthesia",
-                    value: '1'
+                    text: "Anesthesia"
                 },
                 {
                     answerField: 'ehr_q10___2',
-                    text: "ASAP",
-                    value: '2'
+                    text: "ASAP"
                 },
                 {
                     answerField: 'ehr_q10___3',
-                    text: "Beacon",
-                    value: '3'
+                    text: "Beacon"
                 },
                 {
                     answerField: 'ehr_q10___4',
-                    text: "Beaker",
-                    value: '4'
+                    text: "Beaker"
                 },
                 {
                     answerField: 'ehr_q10___5',
-                    text: "BedTime",
-                    value: '5'
+                    text: "BedTime"
                 },
                 {
                     answerField: 'ehr_q10___6',
-                    text: "Benefits Engine",
-                    value: '6'
+                    text: "Benefits Engine"
                 },
                 {
                     answerField: 'ehr_q10___7',
-                    text: "Bones",
-                    value: '7'
+                    text: "Bones"
                 },
                 {
                     answerField: 'ehr_q10___8',
-                    text: "Bridges",
-                    value: '8'
+                    text: "Bridges"
                 },
                 {
-                    text: "Bugsy",
-                    value: '9'
+                    answerField: 'ehr_q10___9',
+                    text: "Bugsy"
                 },
                 {
-                    text: "Caboodle",
-                    value: '10'
+                    answerField: 'ehr_q10___10',
+                    text: "Caboodle"
                 },
                 {
-                    text: "Cadence",
-                    value: '11'
+                    answerField: 'ehr_q10___11',
+                    text: "Cadence"
                 },
                 {
-                    text: "Care Everywhere",
-                    value: '12'
+                    answerField: 'ehr_q10___12',
+                    text: "Care Everywhere"
                 },
                 {
-                    text: "Charge Router",
-                    value: '13'
+                    answerField: 'ehr_q10___13',
+                    text: "Charge Router"
                 },
                 {
-                    text: "Chronicles",
-                    value: '14'
+                    answerField: 'ehr_q10___14',
+                    text: "Chronicles"
                 },
                 {
-                    text: "Claims",
-                    value: '15'
+                    answerField: 'ehr_q10___15',
+                    text: "Claims"
                 },
                 {
-                    text: "Clinical Case Management",
-                    value: '16'
+                    answerField: 'ehr_q10___16',
+                    text: "Clinical Case Management"
                 },
                 {
-                    text: "Cogito",
-                    value: '17'
+                    answerField: 'ehr_q10___17',
+                    text: "Cogito"
                 },
                 {
-                    text: "Cogito Clarity",
-                    value: '18'
+                    answerField: 'ehr_q10___18',
+                    text: "Cogito Clarity"
                 },
                 {
-                    text: "Cupid",
-                    value: '19'
+                    answerField: 'ehr_q10___19',
+                    text: "Cupid"
                 },
                 {
-                    text: "Data Courier",
-                    value: '20'
+                    answerField: 'ehr_q10___20',
+                    text: "Data Courier"
                 },
                 {
-                    text: "Dorothy",
-                    value: '21'
+                    answerField: 'ehr_q10___21',
+                    text: "Dorothy"
                 },
                 {
-                    text: "Epic Client Systems Administration",
-                    value: '22'
+                    answerField: 'ehr_q10___22',
+                    text: "Epic Client Systems Administration"
                 },
                 {
-                    text: "EpicCare Ambulatory",
-                    value: '23'
+                    answerField: 'ehr_q10___23',
+                    text: "EpicCare Ambulatory"
                 },
                 {
-                    text: "EpicCare Inpatient",
-                    value: '24'
+                    answerField: 'ehr_q10___24',
+                    text: "EpicCare Inpatient"
                 },
                 {
-                    text: "EpicCare Link",
-                    value: '25'
+                    answerField: 'ehr_q10___25',
+                    text: "EpicCare Link"
                 },
                 {
-                    text: "Grand Central",
-                    value: '26'
+                    answerField: 'ehr_q10___26',
+                    text: "Grand Central"
                 },
                 {
-                    text: "Health Information Fundamentals",
-                    value: '27'
+                    answerField: 'ehr_q10___27',
+                    text: "Health Information Fundamentals"
                 },
                 {
-                    text: "Healthy Planet",
-                    value: '28'
+                    answerField: 'ehr_q10___28',
+                    text: "Healthy Planet"
                 },
                 {
-                    text: "HOD",
-                    value: '29'
+                    answerField: 'ehr_q10___29',
+                    text: "HOD"
                 },
                 {
-                    text: "Home Health Revenue Cycle",
-                    value: '30'
+                    answerField: 'ehr_q10___30',
+                    text: "Home Health Revenue Cycle"
                 },
                 {
-                    text: "Hospice Billing",
-                    value: '31'
+                    answerField: 'ehr_q10___31',
+                    text: "Hospice Billing"
                 },
                 {
-                    text: "Identity",
-                    value: '32'
+                    answerField: 'ehr_q10___32',
+                    text: "Identity"
                 },
                 {
-                    text: "Interconnect",
-                    value: '33'
+                    answerField: 'ehr_q10___33',
+                    text: "Interconnect"
                 },
                 {
-                    text: "Kaleidoscope",
-                    value: '34'
+                    answerField: 'ehr_q10___34',
+                    text: "Kaleidoscope"
                 },
                 {
-                    text: "MyChart",
-                    value: '35'
+                    answerField: 'ehr_q10___35',
+                    text: "Long Term Care"
                 },
                 {
-                    text: "Nurse Triage",
-                    value: '36'
+                    answerField: 'ehr_q10___36',
+                    text: "MyChart"
                 },
                 {
-                    text: "Operational Database",
-                    value: '37'
+                    answerField: 'ehr_q10___37',
+                    text: "Nurse Triage"
                 },
                 {
-                    text: "OpTime",
-                    value: '38'
+                    answerField: 'ehr_q10___38',
+                    text: "Operational Database"
                 },
                 {
-                    text: "Physician Builder",
-                    value: '39'
+                    answerField: 'ehr_q10___39',
+                    text: "OpTime"
                 },
                 {
-                    text: "Phoenix",
-                    value: '40'
+                    answerField: 'ehr_q10___40',
+                    text: "Physician Builder"
                 },
                 {
-                    text: "Prelude",
-                    value: '41'
+                    answerField: 'ehr_q10___41',
+                    text: "Phoenix"
                 },
                 {
-                    text: "Radiant",
-                    value: '42'
+                    answerField: 'ehr_q10___42',
+                    text: "Prelude"
                 },
                 {
-                    text: "Referrals",
-                    value: '43'
+                    answerField: 'ehr_q10___43',
+                    text: "Radiant"
                 },
                 {
-                    text: "Rehab",
-                    value: '44'
+                    answerField: 'ehr_q10___44',
+                    text: "Referrals"
                 },
                 {
-                    text: "Research",
-                    value: '45'
+                    answerField: 'ehr_q10___45',
+                    text: "Rehab"
                 },
                 {
-                    text: "Resolute HB for Single Billing Office",
-                    value: '46'
+                    answerField: 'ehr_q10___46',
+                    text: "Research"
                 },
                 {
-                    text: "Resolute Hospital Billing",
-                    value: '47'
+                    answerField: 'ehr_q10___47',
+                    text: "Resolute HB for Single Billing Office"
                 },
                 {
-                    text: "Resolute PB for Single Billing Office",
-                    value: '48'
+                    answerField: 'ehr_q10___48',
+                    text: "Resolute Hospital Billing"
                 },
                 {
-                    text: "Resolute Professional Billing",
-                    value: '49'
+                    answerField: 'ehr_q10___49',
+                    text: "Resolute PB for Single Billing Office"
                 },
                 {
-                    text: "Security and Access",
-                    value: '50'
+                    answerField: 'ehr_q10___50',
+                    text: "Resolute Professional Billing"
                 },
                 {
-                    text: "Stork",
-                    value: '51'
+                    answerField: 'ehr_q10___51',
+                    text: "Security and Access"
                 },
                 {
-                    text: "Tapestry",
-                    value: '52'
+                    answerField: 'ehr_q10___52',
+                    text: "Stork"
                 },
                 {
-                    text: "Training, Environments and Documentation",
-                    value: '53'
+                    answerField: 'ehr_q10___53',
+                    text: "Tapestry"
                 },
                 {
-                    text: "Welcome",
-                    value: '54'
+                    answerField: 'ehr_q10___54',
+                    text: "Training, Environments and Documentation"
                 },
                 {
-                    text: "Willow Ambulatory",
-                    value: '55'
+                    answerField: 'ehr_q10___55',
+                    text: "Welcome"
                 },
                 {
-                    text: "Willow Inpatient",
-                    value: '56'
+                    answerField: 'ehr_q10___56',
+                    text: "Willow Ambulatory"
                 },
                 {
-                    text: "Willow Inventory",
-                    value: '57'
+                    answerField: 'ehr_q10___57',
+                    text: "Willow Inpatient"
                 },
                 {
-                    text: "Wisdom",
-                    value: '58'
+                    answerField: 'ehr_q10___58',
+                    text: "Willow Inventory"
                 },
                 {
-                    text: "SmartForms",
-                    value: '59'
+                    answerField: 'ehr_q10___59',
+                    text: "Wisdom"
                 },
                 {
-                    text: "Order Transmittal",
-                    value: '60'
+                    answerField: 'ehr_q10___60',
+                    text: "SmartForms"
+                },
+                {
+                    answerField: 'ehr_q10___61',
+                    text: "Order Transmittal"
                 }
             ]
         },
