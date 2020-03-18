@@ -74,7 +74,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         /*
          * If in ending state OR question shouldRender is false, congratulate the user and allow them to move to next survey.
          */
-        if (questionIndex === model.questions.length-1) {
+        if (questionIndex === model.questions.length) {
             return (
                 <ModelTransitionForm 
                     header={`You've completed the ${model.name} survey!`}
@@ -179,7 +179,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
              */
             return i;
         }
-        return model.questions.length-1;
+        return model.questions.length;
     }
 
     private handleGoBackClick = () => {
