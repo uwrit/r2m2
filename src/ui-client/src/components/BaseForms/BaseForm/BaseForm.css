@@ -49,6 +49,15 @@
     max-width: 800px;
 }
 
+.form-question-subheader {
+    color: rgb(125,125,125);
+    font-size: 1.0rem;
+    margin: auto;
+    margin-top: 5px;
+    max-width: 800px;
+    text-align: left;
+}
+
 .form-header.lg {
     color: rgb(40, 40, 40);
     font-size: 2.8rem;

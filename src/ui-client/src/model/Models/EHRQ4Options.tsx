@@ -170,7 +170,7 @@ export const ehr_q4_5___3: ModelQuestionOption = {
 export const ehr_q4_5_1___1: ModelQuestionOption = {
     answerField: 'ehr_q4_5_1___1',
     q8_9AnswerField: 'ehr_q___32',
-    text:<span>Preferences for contact and biobank</span>
+    text:<span>Research preferences for contact and biobank</span>
 }
 export const ehr_q4_5_1___2: ModelQuestionOption = {
     answerField: 'ehr_q4_5_1___2',
