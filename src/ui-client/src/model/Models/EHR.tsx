@@ -37,7 +37,7 @@ export const EHR: BaseModel =
                     value: '4'
                 },
                 {
-                    text: "We currently use an EHR fully (i.e. for all patient and administratively related care).",
+                    text: "We currently use an EHR fully (i.e. for all patient care and administration needs related to care).",
                     value: '5'
                 }
             ]
@@ -202,19 +202,27 @@ export const EHR: BaseModel =
         {
             answerField: 'ehr_q5',
             shouldRender: (answers: UserAnswers) => new Set(['4', '5']).has(answers['ehr_q1']) && answers['ehr_q3'] === '2',
-            text: "Choose the staffing model that best represents your institutions model for research IT support in the EHR:",
+            text: 
+                <span>Choose the staffing model that best represents your institutions model for research IT support in the EHR:
+                    <div className="form-question-subheader">
+                        <div>Resource/Staffing Definitions:</div>
+                        <div><u>Embedded EHR IT Staff</u>: Build analysts, reporting analysts and managers are pulled from other institutional Epic teams and work as a decentralized group to serve research needs in addition to their primary team responsibilities.</div>
+                        <div><u>Dedicated EHR IT Staff</u>: Build analysts, reporting analysts and managers all work to facilitate research as one dedicated team with no other obligations outside of research initiatives.</div>
+                        <div><u>No Research EHR IT Staff</u>: No Build analysts, reporting analysts and managers work to serve research needs within the Epic system.</div>
+                    </div>
+                </span>,
             type: QuestionType.SingleAnswer,
             options: [
                 {
-                    text: "Embedded Research EHR IT Staff",
+                    text: <span><strong>Embedded</strong> Research EHR IT Staff</span>,
                     value: '1'
                 },
                 {
-                    text: "Dedicated Research EHR IT Staff",
+                    text: <span><strong>Dedicated</strong> Research EHR IT Staff</span>,
                     value: '2'
                 },
                 {
-                    text: "Combination of Dedicated and Embedded Research EHR IT Staff",
+                    text: <span>Combination of <strong>Dedicated</strong> and <strong>Embedded</strong> Research EHR IT Staff</span>,
                     value: '3'
                 }
             ]
@@ -222,7 +230,7 @@ export const EHR: BaseModel =
         {
             answerField: 'ehr_q6a',
             shouldRender: (answers: UserAnswers) => new Set(['1','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && answers['ehr_q3'] === '2',
-            text: "How many individuals embedded within your Information Technology (IT) teams have a percent of their effort spent building, testing, maintaining tools within the EHR which support Research?",
+            text: <span>How many individuals <strong>embedded</strong> within your Information Technology (IT) teams have a percent of their effort spent building, testing, maintaining tools within the EHR which support Research?</span>,
             type: QuestionType.SingleAnswer,
             options: [
                 {
@@ -246,7 +254,7 @@ export const EHR: BaseModel =
         {
             answerField: 'ehr_q6b',
             shouldRender: (answers: UserAnswers) => new Set(['2','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && answers['ehr_q3'] === '2',
-            text: "How many individuals’ effort within your institution are dedicated to building, testing, maintaining tools within the EHR which support research?",
+            text: <span>How many individuals' effort within your institution are <strong>dedicated</strong> to building, testing, maintaining tools within the EHR which support research?</span>,
             type: QuestionType.SingleAnswer,
             options: [
                 {
@@ -270,7 +278,7 @@ export const EHR: BaseModel =
         {
             answerField: 'ehr_q7',
             shouldRender: (answers: UserAnswers) => new Set(['1','3']).has(answers['ehr_q5']) && new Set(['4','5']).has(answers['ehr_q1']) && answers['ehr_q3'] === '2',
-            text: "Of the individuals embedded within your Information Technology (IT) teams that support research within the EHR, what is the average percent effort they spend working on research builds, testing and maintenance within the EHR?",
+            text: <span>Of the individuals <strong>embedded</strong> within your Information Technology (IT) teams that support research within the EHR, what is the average percent effort they spend working on research builds, testing and maintenance within the EHR?</span>,
             type: QuestionType.SingleAnswer,
             options: [
                 {
@@ -308,7 +316,7 @@ export const EHR: BaseModel =
                 }
                 return opts;
             },
-            text: "Please indicate which areas of research activity in the EHR are supported by Embedded Research EHR IT Staff (Select all that apply):",
+            text: <span>Please indicate which areas of research activity in the EHR are supported by <strong>Embedded</strong> Research EHR IT Staff (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: []
         },
@@ -325,7 +333,7 @@ export const EHR: BaseModel =
                 }
                 return opts;
             },
-            text: "Please indicate which areas of research activity in the EHR are supported by Dedicated Research EHR IT Staff (Select all that apply):",
+            text: <span>Please indicate which areas of research activity in the EHR are supported by <strong>Dedicated</strong> Research EHR IT Staff (Select all that apply):</span>,
             type: QuestionType.MultipleAnswer,
             options: []
         },
