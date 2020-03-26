@@ -12,8 +12,26 @@
 }
 
 .form-content {
-    overflow-y: auto;
+    overflow-y: hidden;
     max-height: 560px;
+}
+
+.form-content:hover {
+    overflow-y: auto;
+}
+
+.form-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.form-content::-webkit-scrollbar-thumb {
+    background-color: rgb(130, 130, 130);
+    border-radius: 10px;
+}
+
+.form-content::-webkit-scrollbar:hover {
+    background-color: rgb(235, 235, 235);
+    border-radius: 10px;
 }
 
 .form-inner {
