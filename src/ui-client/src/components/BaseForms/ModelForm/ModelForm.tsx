@@ -36,7 +36,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         const c = this.className;
         const { answers, model } = this.props;
         const { questionIndex } = this.state;
-        const cornerInfo = ((questionIndex/model.questions.length)*100).toFixed(1).toString() + '%';
+        const cornerInfo = ((questionIndex/model.questions.length)*100).toFixed(0).toString() + '%';
 
         /*
          * If in starting state, show the model description and 'Get Started' button.
