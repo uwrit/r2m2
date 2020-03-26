@@ -36,7 +36,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         const c = this.className;
         const { answers, model } = this.props;
         const { questionIndex } = this.state;
-        const cornerInfo = `${questionIndex+1} / ${model.questions.length}`;
+        const cornerInfo = ((questionIndex/model.questions.length)*100).toFixed(1).toString() + '%';
 
         /*
          * If in starting state, show the model description and 'Get Started' button.
@@ -89,6 +89,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
         return (
             <ModelTransitionForm 
                 header={q.text}
+                subheader={q.options.length > 9 ? 'Scroll down for more options' : undefined}
                 content={this.getOptions(q, answers).map((o,i) => (
                     <ModelOption 
                         key={i} data={o}
